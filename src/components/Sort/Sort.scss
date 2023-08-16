@@ -1,0 +1,34 @@
+@import "../../scss/variables";
+
+.sort {
+  display: flex;
+  flex-direction: row;
+
+  &__label {
+    font-family: "Nunito", sans-serif;
+    font-weight: bold;
+    margin-right: 5px;
+  }
+
+  &__select {
+    overflow: hidden;
+    border: none;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 17px;
+    cursor: pointer;
+    &-option {
+      border: none;
+      &:hover {
+        background: rgba(254, 95, 30, 0.05);
+      }
+      &.active {
+        font-weight: bold;
+        color: $orange;
+      }
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
