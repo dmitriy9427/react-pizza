@@ -4,8 +4,7 @@
   display: inline-block;
   background-color: $orange;
   border-radius: 30px;
-  padding: 10px 20px;
-  min-width: 100px;
+  padding: 7px 15px;
   text-align: center;
   cursor: pointer;
   transition: background-color $duration ease-in-out,
@@ -103,7 +102,7 @@
 
     span {
       font-weight: 600;
-      font-size: 16px;
+      // font-size: 16px;
     }
 
     &:hover {
@@ -152,7 +151,7 @@
   .button {
     padding: 7px 14px;
     span {
-      font-size: 12px;
+      // font-size: 12px;
     }
     &--cart {
       margin-top: 20px;
