@@ -1,21 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 
 import "./Sort.scss";
 
 function Sort() {
+  const [selected, setSelected] = useState(true);
+  const options = ["популярности", "цене", "алфавиту"];
+
   return (
     <div className="sort">
       <label className="sort__label">Сортировка по: </label>
       <select className="sort__select">
-        <option className="sort__select-option  active" value="По популярности">
-          популярности
-        </option>
-        <option className="sort__select-option" value="цене">
-          цене
-        </option>
-        <option className="sort__select-option" value="алфавиту">
-          алфавиту
-        </option>
+        {options.map((option, index) => (
+          <option key={index} className="sort__select-option" value={option}>
+            {option}
+          </option>
+        ))}
       </select>
     </div>
   );

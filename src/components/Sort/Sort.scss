@@ -11,13 +11,18 @@
   }
 
   &__select {
+    width: auto;
     overflow: hidden;
     border: none;
     border-radius: 30px;
     font-weight: bold;
     font-size: 17px;
     cursor: pointer;
+    color: $orange;
+    background-color: transparent;
+
     &-option {
+      color: $black;
       border: none;
       &:hover {
         background: rgba(254, 95, 30, 0.05);
@@ -30,5 +35,26 @@
         cursor: pointer;
       }
     }
+  }
+}
+
+@media screen and (max-width: 1340px) {
+  .sort {
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .sort {
+    flex-direction: row;
+  }
+}
+
+@media screen and (max-width: 410px) {
+  .sort {
+    flex-direction: column;
+    margin: 0 auto;
   }
 }

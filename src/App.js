@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import Header from "./components/Header/Header";
 
@@ -6,6 +6,8 @@ import "./scss/app.scss";
 import Categories from "./components/Categories/Categories";
 import Sort from "./components/Sort/Sort";
 import Pizza from "./components/Pizza/Pizza";
+
+import pizzas from "./assets/pizzaDB.json";
 
 function App() {
   return (
@@ -19,16 +21,9 @@ function App() {
           </div>
           <h2 className="content__title">Все пиццы</h2>
           <div className="content__items">
-            <Pizza />
-            <Pizza />
-            <Pizza />
-            <Pizza />
-            <Pizza />
-            <Pizza />
-            <Pizza />
-            <Pizza />
-            <Pizza />
-            <Pizza />
+            {pizzas.map((pizza) => (
+              <Pizza key={pizza.id} {...pizza} />
+            ))}
           </div>
         </div>
       </div>

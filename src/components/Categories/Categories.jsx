@@ -1,15 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 
-function Categories() {
+// import "./Categories.scss";
+
+function Categories({}) {
+  const [selectedCategory, setSelectedCategory] = useState(0);
+  const categories = [
+    "Все",
+    "Мясные",
+    "Вегетарианская",
+    "Гриль",
+    "Острые",
+    "Закрытые",
+  ];
+
+  const сhoosePizzaСategories = (index) => {
+    setSelectedCategory(index);
+  };
+
   return (
     <div className="categories">
       <ul>
-        <li className="active">Все</li>
-        <li>Мясные</li>
-        <li>Вегетарианская</li>
-        <li>Гриль</li>
-        <li>Острые</li>
-        <li>Закрытые</li>
+        {categories.map((category, index) => (
+          <li
+            onClick={() => сhoosePizzaСategories(index)}
+            key={index}
+            className={selectedCategory === index ? "active" : ""}
+          >
+            {category}
+          </li>
+        ))}
       </ul>
     </div>
   );

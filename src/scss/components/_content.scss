@@ -1,0 +1,41 @@
+.content {
+  padding: 40px 0;
+
+  &__title {
+    margin: 35px 0;
+  }
+
+  &__items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 65px 35px;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+@media screen and (max-width: 1340px) {
+  .content {
+    &__top {
+      align-items: start;
+    }
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .content {
+    padding: 20px 0;
+    &__top {
+      flex-direction: column;
+    }
+    &__items {
+      row-gap: 30px;
+    }
+  }
+}

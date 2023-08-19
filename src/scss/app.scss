@@ -15,27 +15,6 @@ body {
   max-width: 1400px;
 }
 
-.content {
-  padding: 40px 0;
-
-  &__title {
-    margin: 35px 0;
-  }
-
-  &__items {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 65px 35px;
-    justify-content: space-evenly;
-  }
-
-  &__top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-}
-
 .container {
   width: $container-width;
   margin: 0 auto;

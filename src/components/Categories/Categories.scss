@@ -1,4 +1,4 @@
-@import "../variables";
+@import "../../scss/variables";
 
 .categories {
   ul {
@@ -12,7 +12,6 @@
       font-weight: bold;
       cursor: pointer;
       transition: background-color 0.1s ease-in-out;
-      @include noselect();
 
       &:hover {
         background-color: darken(#f9f9f9, 2%);
@@ -29,23 +28,3 @@
     }
   }
 }
-
-@media screen and (max-width: 1340px) {
-  .categories {
-    ul {
-      flex-wrap: wrap;
-      li {
-        margin-bottom: 10px;
-      }
-    }
-  }
-}
-
-// @media screen and (max-width: 780px) {
-//   .categories {
-//     ul {
-//       display: grid;
-//       grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-//     }
-//   }
-// }
