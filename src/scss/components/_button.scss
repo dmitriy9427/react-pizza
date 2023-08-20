@@ -102,7 +102,6 @@
 
     span {
       font-weight: 600;
-      // font-size: 16px;
     }
 
     &:hover {
@@ -150,9 +149,7 @@
 @media screen and (max-width: 460px) {
   .button {
     padding: 7px 14px;
-    span {
-      // font-size: 12px;
-    }
+
     &--cart {
       margin-top: 20px;
     }

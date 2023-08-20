@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-// import "./Categories.scss";
+import "./Categories.scss";
 
 function Categories({}) {
   const [selectedCategory, setSelectedCategory] = useState(0);

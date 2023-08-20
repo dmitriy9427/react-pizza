@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import "./Pizza.scss";
+
 function Pizza({ imageUrl, title, types, sizes, price }) {
   const [typeActivate, setTypeActivate] = useState(0);
   const [selectedSize, setSelectedSize] = useState(0);

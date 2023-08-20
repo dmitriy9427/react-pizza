@@ -24,6 +24,18 @@
       &.active {
         background-color: #282828;
         color: #fff;
+        transition: background-color 0.7s ease, color 0.7s ease-out;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1340px) {
+  .categories {
+    ul {
+      flex-wrap: wrap;
+      li {
+        margin-bottom: 10px;
       }
     }
   }
