@@ -1,25 +1,43 @@
 .root {
-  display: flex;
-  width: 450px;
+  display: grid;
+  grid-template-columns: minmax(200px, 1fr);
+  grid-template-rows: repeat(3, minmax(60px, 1fr));
+  align-items: center;
+  align-content: center;
+  justify-items: center;
+  row-gap: 10px;
+  text-align: center;
+  margin: auto;
+  max-width: 450px;
   height: 450px;
-
-  .title {
+  @media (max-width: 450px) {
+    height: 350px;
   }
-}
-
-.icon {
-  width: 50px;
-  height: 30px;
+  svg {
+    width: 60px;
+    height: 60px;
+  }
+  .title {
+    font-size: 50px;
+    @media (max-width: 600px) {
+      font-size: 30px;
+    }
+    @media (max-width: 450px) {
+      font-size: 20px;
+    }
+  }
 }
 
 .back {
   border: 2px solid #c3c3c3;
   background-color: transparent;
   border-radius: 30px;
-  padding: 7px 15px;
+  padding: 12px 56px;
+  font-size: 15px;
   cursor: pointer;
+
   &:hover {
     color: aliceblue;
-    background-color: darken($color: #000000, $amount: 10);
+    background-color: darken($color: #aca9a9, $amount: 20);
   }
 }

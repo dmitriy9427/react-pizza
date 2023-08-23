@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import cartEmpty from "../../img/empty-cart.png";
+
 function CartEmpty() {
   return (
     <div class="cart cart--empty">
@@ -12,7 +14,7 @@ function CartEmpty() {
         <br />
         Для того, чтобы заказать пиццу, перейди на главную страницу.
       </p>
-      <img src="/img/empty-cart.png" alt="Empty cart" />
+      <img src={cartEmpty} alt="Empty cart" />
       <Link to="/react-pizza" class="button button--black">
         <span>Вернуться назад</span>
       </Link>

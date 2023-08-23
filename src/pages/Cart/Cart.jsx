@@ -6,6 +6,9 @@ import CartEmpty from "../../components/CartEmpty/CartEmpty";
 function Cart() {
   const navigate = useNavigate();
   return (
+    // <>
+    //   <CartEmpty />
+    // </>
     <div className="cart container--cart">
       <div className="cart__top">
         <h2 className="content__title">
