@@ -11,6 +11,7 @@
     gap: 65px 35px;
     justify-content: space-evenly;
     align-items: center;
+    margin-top: 40px;
   }
 
   &__top {
@@ -35,6 +36,7 @@
       flex-direction: column;
     }
     &__items {
+      margin-top: 20px;
       row-gap: 30px;
     }
   }

@@ -22,8 +22,14 @@ body {
   &--cart {
     max-width: 820px;
     margin: 90px auto;
+    @media (max-width: 464px) {
+      margin: 30px auto;
+    }
     .content__title {
       margin: 0;
+      @media (max-width: 464px) {
+        margin-bottom: 20px;
+      }
     }
   }
 }
@@ -33,6 +39,9 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    @media (max-width: 464px) {
+      flex-direction: column;
+    }
   }
 
   .content__title {
@@ -84,104 +93,163 @@ body {
     }
   }
 
-  &__item {
+  &__items {
     display: flex;
-    width: 100%;
-    border-top: 1px solid $gray-line;
-    padding-top: 30px;
-    margin-top: 30px;
-
-    &-img {
+    flex-direction: column;
+    &-item {
       display: flex;
-      align-items: center;
-      margin-right: 15px;
-      width: 10%;
-
-      img {
-        width: 80px;
-        height: 80px;
-      }
-    }
-
-    &-info {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      width: 40%;
-
-      h3 {
-        font-weight: bold;
-        font-size: 22px;
-        line-height: 27px;
-        letter-spacing: 0.01em;
-      }
-
-      p {
-        font-size: 18px;
-        color: #8d8d8d;
-      }
-    }
-
-    &-count {
-      display: flex;
-      align-items: center;
       justify-content: space-between;
-      width: 13%;
+      align-items: center;
+      width: 100%;
+      border-top: 1px solid $gray-line;
+      padding-top: 30px;
+      margin-top: 30px;
+      @media (max-width: 500px) {
+        display: grid;
+        grid-template-columns: minmax(210px, 1fr);
+        justify-items: center;
+        align-items: center;
+        row-gap: 15px;
+      }
 
-      &-minus {
-        svg {
-          path:first-of-type {
-            display: none;
+      &-img {
+        display: flex;
+        align-items: center;
+        margin-right: 15px;
+        width: 10%;
+        @media (max-width: 500px) {
+          width: calc(100% - 20%);
+          margin-right: 0;
+        }
+
+        img {
+          width: 80px;
+          height: 80px;
+          @media (max-width: 500px) {
+            width: 90%;
+            height: 90%;
+            margin: 0 auto;
           }
         }
       }
 
-      b {
-        font-size: 22px;
-      }
-    }
+      &-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-right: auto;
+        @media (max-width: 790px) {
+          margin-right: 0;
+        }
 
-    &-price {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 33%;
+        h3 {
+          font-weight: bold;
+          font-size: 22px;
+          line-height: 27px;
+          letter-spacing: 0.01em;
+          @media (max-width: 600px) {
+            font-size: 14px;
+          }
+          @media (max-width: 500px) {
+            font-size: 20px;
+          }
+        }
 
-      b {
-        font-weight: bold;
-        font-size: 22px;
-        letter-spacing: 0.01em;
-      }
-    }
-
-    &-remove {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      width: 4%;
-
-      .button {
-        border-color: darken($color: $gray-line, $amount: 10);
-      }
-
-      svg {
-        transform: rotate(45deg);
-
-        path {
-          fill: darken($color: $gray-line, $amount: 15);
+        p {
+          font-size: 18px;
+          color: #8d8d8d;
+          @media (max-width: 600px) {
+            font-size: 12px;
+          }
+          @media (max-width: 500px) {
+            font-size: 18px;
+          }
         }
       }
 
-      .button {
-        svg {
-          width: 11.5px;
-          height: 11.5px;
-          position: relative;
+      &-count {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-right: auto;
+        width: 15%;
+        @media (max-width: 790px) {
+          flex-direction: column-reverse;
+          margin-right: 0;
         }
-        &:hover,
-        &:active {
+
+        @media (max-width: 500px) {
+          flex-direction: row;
+          width: 35%;
+        }
+        &-minus {
+          border: 3px solid $orange;
+          border-radius: 50%;
+          cursor: pointer;
+        }
+        &-plus {
+          border: 3px solid $orange;
+          border-radius: 50%;
+          cursor: pointer;
+        }
+
+        b {
+          font-size: 22px;
+          @media (max-width: 600px) {
+            font-size: 14px;
+          }
+          @media (max-width: 500px) {
+            font-size: 18px;
+          }
+        }
+      }
+
+      &-price {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 40px;
+        @media (max-width: 670px) {
+          margin-right: 20px;
+        }
+        @media (max-width: 540px) {
+          margin-right: 0;
+        }
+
+        b {
+          font-weight: bold;
+          font-size: 22px;
+          letter-spacing: 0.01em;
+          @media (max-width: 600px) {
+            font-size: 14px;
+          }
+          @media (max-width: 500px) {
+            font-size: 18px;
+          }
+        }
+      }
+
+      &-remove {
+        border: 3px solid #d0d0d0;
+        border-radius: 50%;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+
+        &:hover {
           border-color: darken($color: $gray-line, $amount: 80);
           background-color: darken($color: $gray-line, $amount: 80);
+        }
+
+        svg {
+          transform: rotate(45deg);
+
+          path {
+            fill: darken($color: $gray-line, $amount: 15);
+          }
         }
       }
     }
