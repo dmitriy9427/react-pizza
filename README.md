@@ -9,7 +9,7 @@
 - HTML5:
   - семантическая верстка.
 
-* SASS:
+* SASS(module.scss):
   - Flexbox
   - Grid Layout
   - @media-запросы
@@ -20,6 +20,7 @@
   - jsx
   - хуки (useState, useEffect)
   - react-router v6
+  - react-content-loader(react-sceleton для того чтобы пользователь понимал, что идет загрузка контента.)
 
 #### Инструменты разработки:
 
