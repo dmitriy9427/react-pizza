@@ -1,0 +1,15 @@
+.root {
+  display: none;
+  @media (max-width: 562px) {
+    display: block;
+  }
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  margin-top: 0;
+  @media (max-width: 562px) {
+    display: none;
+  }
+}
