@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import "./Categories.scss";
 
 function Categories({ selectedCategory, handleSelectedCategory }) {
-  console.log(selectedCategory);
   const categories = [
     "Все",
     "Мясные",

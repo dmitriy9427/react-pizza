@@ -6,53 +6,27 @@ import Pizza from "../components/Pizza/Pizza";
 import PizzaSceleton from "../components/Pizza/PizzaSceleton/PizzaSceleton";
 
 function Home() {
-  const [pizzas, setPizzas] = useState(null);
-  const [width, setWidth] = useState(window.innerWidth);
+  const [pizzas, setPizzas] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(0);
   const [sort, setSort] = useState("rating");
-
+  console.log(pizzas);
   async function getPizzas() {
+    setIsLoading(true);
     const sortby = `sortBy=${sort}&order=asc`;
     const category =
-      selectedCategory > 0 ? `category=${selectedCategory}&order=desc` : "";
+      selectedCategory > 0 ? `category=${selectedCategory}&order=asc` : "";
     let res = await fetch(
       `https://64e1008250713530432ce0c5.mockapi.io/pizzas?${sortby}&${category}`
     );
     let json = await res.json();
     setPizzas(json);
+    setIsLoading(false);
   }
 
   useEffect(() => {
     getPizzas();
   }, [selectedCategory, sort]);
-
-  useEffect(() => {
-    const handleResize = (event) => {
-      setWidth(event.target.innerWidth);
-      array();
-    };
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, [width]);
-
-  function array() {
-    if (width < 1469 && width > 1169) {
-      return [...new Array(8)];
-    }
-    if (width < 1170 && width > 864) {
-      return [...new Array(6)];
-    }
-    if (width < 865 && width > 561) {
-      return [...new Array(4)];
-    }
-    if (width < 562 && width > 0) {
-      return [...new Array(2)];
-    } else {
-      return [...new Array(10)];
-    }
-  }
 
   return (
     <>
@@ -65,9 +39,9 @@ function Home() {
         <Sort sort={sort} handleSelectedSorted={(value) => setSort(value)} />
       </div>
       <div className="content__items">
-        {pizzas
+        {pizzas && !isLoading
           ? pizzas.map((pizza) => <Pizza key={pizza.id} {...pizza} />)
-          : array().map((_, index) => <PizzaSceleton key={index} />)}
+          : [...new Array(5)].map((_, index) => <PizzaSceleton key={index} />)}
       </div>
     </>
   );

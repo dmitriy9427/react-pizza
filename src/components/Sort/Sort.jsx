@@ -21,7 +21,6 @@ function Sort({ sort, handleSelectedSorted }) {
     },
   ];
 
-  console.log(sort);
   return (
     <div className="sort">
       <label className="sort__label">Сортировка по: </label>
