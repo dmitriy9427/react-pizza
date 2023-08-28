@@ -8,16 +8,34 @@ import PizzaSceleton from "../components/Pizza/PizzaSceleton/PizzaSceleton";
 function Home() {
   const [pizzas, setPizzas] = useState(null);
   const [width, setWidth] = useState(window.innerWidth);
+  const [selectedCategory, setSelectedCategory] = useState(0);
+  const [sort, setSort] = useState("rating");
 
   async function getPizzas() {
-    let res = await fetch("https://64e1008250713530432ce0c5.mockapi.io/pizzas");
+    const sortby = `sortBy=${sort}&order=asc`;
+    const category =
+      selectedCategory > 0 ? `category=${selectedCategory}&order=desc` : "";
+    let res = await fetch(
+      `https://64e1008250713530432ce0c5.mockapi.io/pizzas?${sortby}&${category}`
+    );
     let json = await res.json();
     setPizzas(json);
   }
 
   useEffect(() => {
     getPizzas();
-  }, []);
+  }, [selectedCategory, sort]);
+
+  useEffect(() => {
+    const handleResize = (event) => {
+      setWidth(event.target.innerWidth);
+      array();
+    };
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [width]);
 
   function array() {
     if (width < 1469 && width > 1169) {
@@ -36,23 +54,15 @@ function Home() {
     }
   }
 
-  useEffect(() => {
-    const handleResize = (event) => {
-      setWidth(event.target.innerWidth);
-      array();
-    };
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
   return (
     <>
       <h2 className="content__title">Все пиццы</h2>
       <div className="content__top">
-        <Categories />
-        <Sort />
+        <Categories
+          selectedCategory={selectedCategory}
+          handleSelectedCategory={(i) => setSelectedCategory(i)}
+        />
+        <Sort sort={sort} handleSelectedSorted={(value) => setSort(value)} />
       </div>
       <div className="content__items">
         {pizzas

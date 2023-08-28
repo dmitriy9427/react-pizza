@@ -2,17 +2,40 @@ import React, { useState } from "react";
 
 import "./Sort.scss";
 
-function Sort() {
-  const [selected, setSelected] = useState(true);
-  const options = ["популярности", "цене", "алфавиту"];
+function Sort({ sort, handleSelectedSorted }) {
+  const options = [
+    {
+      id: 1,
+      name: "популярности",
+      property: "rating",
+    },
+    {
+      id: 2,
+      name: "цене",
+      property: "price",
+    },
+    {
+      id: 3,
+      name: "алфавиту",
+      property: "title",
+    },
+  ];
 
+  console.log(sort);
   return (
     <div className="sort">
       <label className="sort__label">Сортировка по: </label>
-      <select className="sort__select">
-        {options.map((option, index) => (
-          <option key={index} className="sort__select-option" value={option}>
-            {option}
+      <select
+        onChange={(e) => handleSelectedSorted(e.currentTarget.value)}
+        className="sort__select"
+      >
+        {options.map((option) => (
+          <option
+            key={option.id}
+            className="sort__select-option"
+            value={option.property}
+          >
+            {option.name}
           </option>
         ))}
       </select>

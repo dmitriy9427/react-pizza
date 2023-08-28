@@ -2,8 +2,8 @@ import React, { useState } from "react";
 
 import "./Categories.scss";
 
-function Categories({}) {
-  const [selectedCategory, setSelectedCategory] = useState(0);
+function Categories({ selectedCategory, handleSelectedCategory }) {
+  console.log(selectedCategory);
   const categories = [
     "Все",
     "Мясные",
@@ -13,16 +13,12 @@ function Categories({}) {
     "Закрытые",
   ];
 
-  const сhoosePizzaСategories = (index) => {
-    setSelectedCategory(index);
-  };
-
   return (
     <div className="categories">
       <ul>
         {categories.map((category, index) => (
           <li
-            onClick={() => сhoosePizzaСategories(index)}
+            onClick={() => handleSelectedCategory(index)}
             key={index}
             className={selectedCategory === index ? "active" : ""}
           >
