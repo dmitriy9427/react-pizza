@@ -10,7 +10,7 @@ function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(0);
   const [sort, setSort] = useState("rating");
-  console.log(pizzas);
+
   async function getPizzas() {
     setIsLoading(true);
     const sortby = `sortBy=${sort}&order=asc`;
