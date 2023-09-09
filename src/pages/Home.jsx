@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 import Categories from "../components/Categories/Categories";
 import Sort from "../components/Sort/Sort";
 import Pizza from "../components/Pizza/Pizza";
 import PizzaSceleton from "../components/Pizza/PizzaSceleton/PizzaSceleton";
+import { SearchContext } from "../App";
 
 function Home() {
   const [pizzas, setPizzas] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(0);
   const [sort, setSort] = useState("rating");
+  const { search, setSearch } = useContext(SearchContext);
 
   async function getPizzas() {
     setIsLoading(true);
@@ -40,7 +42,11 @@ function Home() {
       </div>
       <div className="content__items">
         {pizzas && !isLoading
-          ? pizzas.map((pizza) => <Pizza key={pizza.id} {...pizza} />)
+          ? pizzas
+              .filter((pizza) =>
+                pizza.title.toLowerCase().includes(search.toLowerCase())
+              )
+              .map((pizza) => <Pizza key={pizza.id} {...pizza} />)
           : [...new Array(5)].map((_, index) => <PizzaSceleton key={index} />)}
       </div>
     </>

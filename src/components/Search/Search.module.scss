@@ -1,0 +1,51 @@
+.div {
+  position: relative;
+  width: 450px;
+  @media screen and (max-width: 1165px) {
+    width: 400px;
+  }
+  @media screen and (max-width: 1102px) {
+    width: 390px;
+  }
+  @media screen and (max-width: 1090px) {
+    width: 350px;
+  }
+  @media screen and (max-width: 1041px) {
+    width: 320px;
+  }
+  @media screen and (max-width: 370px) {
+    width: 250px;
+  }
+}
+
+.input {
+  position: relative;
+  margin: 0 auto;
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: 1px solid rgba($color: #787575, $alpha: 0.3);
+  width: 100%;
+  white-space: nowrap; /* Текст не переносится */
+  overflow: hidden; /* Обрезаем всё за пределами блока */
+  text-overflow: ellipsis; /* Добавляем многоточие */
+  &:focus {
+    border: 1px solid rgba($color: #787575, $alpha: 0.8);
+  }
+  &::placeholder {
+    color: rgba($color: #787575, $alpha: 0.5);
+  }
+}
+
+.icon {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  opacity: 0.3;
+  cursor: pointer;
+  transition: opacity 0.6 ease-in-out;
+  &:hover {
+    opacity: 0.8;
+  }
+}

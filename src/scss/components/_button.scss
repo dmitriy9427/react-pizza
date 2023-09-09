@@ -133,13 +133,24 @@
     align-items: center;
     line-height: 23px;
     padding: 12px 25px;
+    @media (max-width: 1000px) {
+      justify-content: center;
+      width: 300px;
+    }
+    @media (max-width: 360px) {
+      width: 250px;
+    }
 
     svg {
       margin-right: 8px;
       margin-bottom: 1px;
+      @media (max-width: 1000px) {
+        margin-right: 0;
+      }
     }
 
     span {
+      margin: 0 auto;
       font-weight: 600;
       font-size: 16px;
     }
