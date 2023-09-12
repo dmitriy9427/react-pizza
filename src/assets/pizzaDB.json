@@ -6,7 +6,7 @@
     "types": [0, 1],
     "sizes": [26, 30, 40],
     "price": 803,
-    "category": 0,
+    "category": 3,
     "rating": 4
   },
   {
@@ -16,7 +16,7 @@
     "types": [0],
     "sizes": [26, 40],
     "price": 245,
-    "category": 0,
+    "category": 1,
     "rating": 6
   },
   {
@@ -26,7 +26,7 @@
     "types": [0],
     "sizes": [26, 40],
     "price": 295,
-    "category": 1,
+    "category": 2,
     "rating": 4
   },
   {
@@ -91,12 +91,42 @@
   },
   {
     "id": 9,
-    "imageUrl": "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/30367198-f3bd-44ed-9314-6f717960da07.jpg",
+    "imageUrl": "https://static.sushiwok.ru/img/4ec89a12318664b086473295135e6785/500x500",
     "title": "Овощи и грибы 🌱",
     "types": [0, 1],
     "sizes": [26, 30, 40],
     "price": 285,
     "category": 5,
+    "rating": 7
+  },
+  {
+    "id": 10,
+    "imageUrl": "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/30367198-f3bd-44ed-9314-6f717960da07.jpg",
+    "title": "Пикантный цыпленок сулугуни",
+    "types": [0, 1],
+    "sizes": [30, 40],
+    "price": 359,
+    "category": 4,
+    "rating": 4
+  },
+  {
+    "id": 11,
+    "imageUrl": "https://static.sushiwok.ru/img/78349170b17b20722702e8c224813458/500x500",
+    "title": "Дракон на пышном",
+    "types": [0, 2],
+    "sizes": [25, 30],
+    "price": 259,
+    "category": 4,
+    "rating": 7
+  },
+  {
+    "id": 12,
+    "imageUrl": "https://static.sushiwok.ru/img/06304b618b4497248fd5bb1795666227/500x500",
+    "title": "Маргарита на пышном",
+    "types": [0, 2],
+    "sizes": [25, 30],
+    "price": 259,
+    "category": 3,
     "rating": 7
   }
 ]

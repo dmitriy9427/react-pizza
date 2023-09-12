@@ -16,6 +16,7 @@ function Search() {
         placeholder="Введите название пиццы"
       />
       <img
+        onClick={() => setSearch("")}
         className={styles.icon}
         title="Очистить поле ввода"
         src={deleteIcon}

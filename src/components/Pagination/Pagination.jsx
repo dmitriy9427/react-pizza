@@ -5,7 +5,7 @@ function Pagination({ page, setPage }) {
     <div className={styles.pagination}>
       {page > 1 ? (
         <svg
-          onClick={() => setPage((prev) => prev - 1)}
+          onClick={() => setPage(() => page--)}
           width="30px"
           height="30px"
           viewBox="0 0 1024 1024"
@@ -38,7 +38,7 @@ function Pagination({ page, setPage }) {
       </ul>
       {page < 3 ? (
         <svg
-          onClick={() => setPage((prev) => prev + 1)}
+          onClick={() => setPage(() => page++)}
           width="30px"
           height="30px"
           viewBox="0 0 1024 1024"
