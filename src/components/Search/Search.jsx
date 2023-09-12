@@ -15,13 +15,15 @@ function Search() {
         type="text"
         placeholder="Введите название пиццы"
       />
-      <img
-        onClick={() => setSearch("")}
-        className={styles.icon}
-        title="Очистить поле ввода"
-        src={deleteIcon}
-        alt="иконка удаления"
-      />
+      {search && (
+        <img
+          onClick={() => setSearch("")}
+          className={styles.icon}
+          title="Очистить поле ввода"
+          src={deleteIcon}
+          alt="иконка удаления"
+        />
+      )}
     </div>
   );
 }

@@ -15,11 +15,11 @@ import { SearchContext } from "../../App";
 function Home() {
   const [pizzas, setPizzas] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [page, setPage] = useState(1);
   const { search } = useContext(SearchContext);
 
-  const categoryId = useSelector((state) => state.filters.categoryId);
-  const sort = useSelector((state) => state.filters.sort);
+  const { categoryId, sort, currentPage } = useSelector(
+    (state) => state.filters
+  );
   const dispatch = useDispatch();
 
   async function getPizzas() {
@@ -27,9 +27,9 @@ function Home() {
     const sortby = `&sortBy=${sort}&order=asc`;
     const category = categoryId > 0 ? `&category=${categoryId}&order=asc` : "";
     const searching = search ? `&search=${search}` : "";
-    const pages = `page=${page}&limit=5`;
+    const pages = `page=${currentPage}&limit=5`;
     let res = await fetch(
-      `https://64e1008250713530432ce0c5.mockapi.io/pizzas/?${pages}${sortby}${category}${searching}`
+      `https://64e1008250713530432ce0c5.mockapi.io/pizzas/?${pages}${searching}${category}${sortby}`
     );
     let json = await res.json();
     setPizzas(json);
@@ -46,7 +46,7 @@ function Home() {
 
   useEffect(() => {
     getPizzas();
-  }, [categoryId, sort, search, page]);
+  }, [categoryId, sort, search, currentPage]);
 
   return (
     <>
@@ -67,8 +67,7 @@ function Home() {
               .map((pizza) => <Pizza key={pizza.id} {...pizza} />)
           : [...new Array(5)].map((_, index) => <PizzaSceleton key={index} />)}
       </div>
-      {/* <Pagination page={page} setPage={setPage} /> */}
-      {pizzas.length ? <Pagination page={page} setPage={setPage} /> : ""}
+      {pizzas.length ? <Pagination currentPage={currentPage} /> : ""}
     </>
   );
 }

@@ -1,11 +1,18 @@
+import { useDispatch } from "react-redux";
 import styles from "./Pagination.module.scss";
+import {
+  nextPage,
+  prevPage,
+  setSelectedPage,
+} from "../../redux/slices/FilterSlice";
 
-function Pagination({ page, setPage }) {
+function Pagination({ currentPage }) {
+  const dispatch = useDispatch();
   return (
     <div className={styles.pagination}>
-      {page > 1 ? (
+      {currentPage > 1 ? (
         <svg
-          onClick={() => setPage(() => page--)}
+          onClick={() => dispatch(prevPage())}
           width="30px"
           height="30px"
           viewBox="0 0 1024 1024"
@@ -24,21 +31,21 @@ function Pagination({ page, setPage }) {
         ""
       )}
       <ul className={styles.list}>
-        {[1, 2, 3].map((num, i) => {
+        {[1, 2, 3].map((num) => {
           return (
             <li
               key={num}
-              onClick={() => setPage(num)}
-              className={`${page === num ? styles.active : styles.item}`}
+              onClick={() => dispatch(setSelectedPage(num))}
+              className={`${currentPage === num ? styles.active : styles.item}`}
             >
               {num}
             </li>
           );
         })}
       </ul>
-      {page < 3 ? (
+      {currentPage < 3 ? (
         <svg
-          onClick={() => setPage(() => page++)}
+          onClick={() => dispatch(nextPage())}
           width="30px"
           height="30px"
           viewBox="0 0 1024 1024"

@@ -14,15 +14,15 @@
   - Grid Layout
   - @media-запросы
 
-- JavaScript
-  - async/await
 - React.js
   - функциональные компоненты
   - jsx
-  - хуки (useState, useEffect, useContext)
+  - хуки (useState, useEffect, useContext, useRef, useCallback)
   - react-router v6
   - react-content-loader(react-sceleton для того чтобы пользователь понимал, что идет загрузка контента.)
-  -
+  - lodash/debounce(отказ от множественных запросов к API, для увеличения производительности приложения)
+  - async/await
+- Redux - Toolkit
 
 #### Инструменты разработки:
 
