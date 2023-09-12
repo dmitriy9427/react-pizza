@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import "./Sort.scss";
 
-function Sort({ sort, handleSelectedSorted }) {
+function Sort({ handleSelectedSorted }) {
   const options = [
     {
       id: 1,

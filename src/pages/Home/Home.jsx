@@ -1,4 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  setSelectedCategory,
+  setSelectedSort,
+} from "../../redux/slices/FilterSlice";
 
 import Categories from "../../components/Categories/Categories";
 import Sort from "../../components/Sort/Sort";
@@ -6,17 +11,16 @@ import Pizza from "../../components/Pizza/Pizza";
 import PizzaSceleton from "../../components/Pizza/PizzaSceleton/PizzaSceleton";
 import Pagination from "../../components/Pagination/Pagination";
 import { SearchContext } from "../../App";
-import { useSelector } from "react-redux";
 
 function Home() {
   const [pizzas, setPizzas] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [sort, setSort] = useState("rating");
   const [page, setPage] = useState(1);
   const { search } = useContext(SearchContext);
 
   const categoryId = useSelector((state) => state.filters.categoryId);
-  console.log(categoryId);
+  const sort = useSelector((state) => state.filters.sort);
+  const dispatch = useDispatch();
 
   async function getPizzas() {
     setIsLoading(true);
@@ -32,6 +36,14 @@ function Home() {
     setIsLoading(false);
   }
 
+  const handleSelectedCategory = (id) => {
+    dispatch(setSelectedCategory(id));
+  };
+
+  function handleSelectedSort(value) {
+    dispatch(setSelectedSort(value));
+  }
+
   useEffect(() => {
     getPizzas();
   }, [categoryId, sort, search, page]);
@@ -40,8 +52,11 @@ function Home() {
     <>
       <h2 className="content__title">Все пиццы</h2>
       <div className="content__top">
-        <Categories />
-        <Sort sort={sort} handleSelectedSorted={(value) => setSort(value)} />
+        <Categories
+          categoryId={categoryId}
+          handleSlectedCategory={handleSelectedCategory}
+        />
+        <Sort handleSelectedSorted={handleSelectedSort} />
       </div>
       <div className="content__items">
         {pizzas && !isLoading
@@ -52,6 +67,7 @@ function Home() {
               .map((pizza) => <Pizza key={pizza.id} {...pizza} />)
           : [...new Array(5)].map((_, index) => <PizzaSceleton key={index} />)}
       </div>
+      {/* <Pagination page={page} setPage={setPage} /> */}
       {pizzas.length ? <Pagination page={page} setPage={setPage} /> : ""}
     </>
   );
