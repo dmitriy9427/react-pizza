@@ -36,6 +36,10 @@
   }
 }
 
+.input:focus + .svg {
+  opacity: 0.8;
+}
+
 .svg {
   position: absolute;
   top: 10px;
