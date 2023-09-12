@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
 
-import Categories from "../components/Categories/Categories";
-import Sort from "../components/Sort/Sort";
-import Pizza from "../components/Pizza/Pizza";
-import PizzaSceleton from "../components/Pizza/PizzaSceleton/PizzaSceleton";
-import { SearchContext } from "../App";
+import Categories from "../../components/Categories/Categories";
+import Sort from "../../components/Sort/Sort";
+import Pizza from "../../components/Pizza/Pizza";
+import PizzaSceleton from "../../components/Pizza/PizzaSceleton/PizzaSceleton";
+import { SearchContext } from "../../App";
 
 function Home() {
   const [pizzas, setPizzas] = useState([]);
@@ -18,8 +18,9 @@ function Home() {
     const sortby = `sortBy=${sort}&order=asc`;
     const category =
       selectedCategory > 0 ? `category=${selectedCategory}&order=asc` : "";
+    const searching = search ? `&search=${search}` : "";
     let res = await fetch(
-      `https://64e1008250713530432ce0c5.mockapi.io/pizzas?${sortby}&${category}`
+      `https://64e1008250713530432ce0c5.mockapi.io/pizzas?${sortby}&${category}${searching}`
     );
     let json = await res.json();
     setPizzas(json);
@@ -28,7 +29,7 @@ function Home() {
 
   useEffect(() => {
     getPizzas();
-  }, [selectedCategory, sort]);
+  }, [selectedCategory, sort, search]);
 
   return (
     <>

@@ -2,7 +2,7 @@ import React, { createContext, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import Header from "./components/Header/Header";
-import Home from "./pages/Home";
+import Home from "./pages/Home/Home";
 import Cart from "./pages/Cart/Cart";
 import NotFound from "./pages/NotFound/NotFound";
 
