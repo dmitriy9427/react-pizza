@@ -1,14 +1,21 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import { SearchContext } from "../../App";
 import deleteIcon from "../../img/cross-svgrepo-com.svg";
 import styles from "./Search.module.scss";
 
 function Search() {
   const { search, setSearch } = useContext(SearchContext);
+  const inputRef = useRef();
+
+  function handleClearInput() {
+    setSearch("");
+    inputRef.current.focus();
+  }
 
   return (
     <div className={styles.div}>
       <input
+        ref={inputRef}
         value={search}
         onChange={(e) => setSearch(e.target.value)}
         className={styles.input}
@@ -33,7 +40,7 @@ function Search() {
       </svg>
       {search && (
         <img
-          onClick={() => setSearch("")}
+          onClick={() => handleClearInput()}
           className={styles.icon}
           title="Очистить поле ввода"
           src={deleteIcon}
