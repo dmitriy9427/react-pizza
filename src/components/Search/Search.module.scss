@@ -21,7 +21,7 @@
 .input {
   position: relative;
   margin: 0 auto;
-  padding: 10px 20px;
+  padding: 10px 40px;
   border-radius: 20px;
   border: 1px solid rgba($color: #787575, $alpha: 0.3);
   width: 100%;
@@ -34,6 +34,13 @@
   &::placeholder {
     color: rgba($color: #787575, $alpha: 0.5);
   }
+}
+
+.svg {
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  opacity: 0.2;
 }
 
 .icon {

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import {
   setSelectedCategory,
@@ -22,19 +23,21 @@ function Home() {
   );
   const dispatch = useDispatch();
 
-  async function getPizzas() {
-    setIsLoading(true);
-    const sortby = `&sortBy=${sort}&order=asc`;
-    const category = categoryId > 0 ? `&category=${categoryId}&order=asc` : "";
-    const searching = search ? `&search=${search}` : "";
-    const pages = `page=${currentPage}&limit=5`;
-    let res = await fetch(
-      `https://64e1008250713530432ce0c5.mockapi.io/pizzas/?${pages}${searching}${category}${sortby}`
-    );
-    let json = await res.json();
-    setPizzas(json);
-    setIsLoading(false);
-  }
+  const sortby = `&sortBy=${sort}&order=asc`;
+  const category = categoryId > 0 ? `&category=${categoryId}&order=asc` : "";
+  const searching = search ? `&search=${search}` : "";
+  const pages = `page=${currentPage}&limit=5`;
+
+  // async function getPizzas() {
+  //   setIsLoading(true);
+
+  //   let res = await fetch(
+  //     `https://64e1008250713530432ce0c5.mockapi.io/pizzas/?${pages}${searching}${category}${sortby}`
+  //   );
+  //   let json = await res.json();
+  //   setPizzas(json);
+  //   setIsLoading(false);
+  // }
 
   const handleSelectedCategory = (id) => {
     dispatch(setSelectedCategory(id));
@@ -45,7 +48,18 @@ function Home() {
   }
 
   useEffect(() => {
-    getPizzas();
+    setIsLoading(true);
+    axios
+      .get(
+        `https://64e1008250713530432ce0c5.mockapi.io/pizzas/?${pages}${searching}${category}${sortby}`
+      )
+      .then((res) => {
+        setPizzas(res.data);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.log(err.response);
+      });
   }, [categoryId, sort, search, currentPage]);
 
   return (

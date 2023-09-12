@@ -12,6 +12,7 @@ function Pagination({ currentPage }) {
     <div className={styles.pagination}>
       {currentPage > 1 ? (
         <svg
+          className={styles.svg}
           onClick={() => dispatch(prevPage())}
           width="30px"
           height="30px"
@@ -45,6 +46,7 @@ function Pagination({ currentPage }) {
       </ul>
       {currentPage < 3 ? (
         <svg
+          className={styles.svg}
           onClick={() => dispatch(nextPage())}
           width="30px"
           height="30px"
