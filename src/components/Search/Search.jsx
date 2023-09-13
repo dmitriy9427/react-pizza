@@ -12,6 +12,7 @@ function Search() {
 
   const handleClearInput = () => {
     setSearch("");
+    setText("");
     inputRef.current.focus();
   };
 
@@ -31,7 +32,6 @@ function Search() {
       <input
         ref={inputRef}
         value={text}
-        // onChange={(e) => setSearch(e.target.value)}
         onChange={handleChange}
         className={styles.input}
         type="text"
