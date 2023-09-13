@@ -1,26 +1,41 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useRef, useCallback, useState } from "react";
 import { SearchContext } from "../../App";
+import debounce from "lodash.debounce";
+
 import deleteIcon from "../../img/cross-svgrepo-com.svg";
 import styles from "./Search.module.scss";
 
 function Search() {
   const { search, setSearch } = useContext(SearchContext);
+  const [text, setText] = useState("");
   const inputRef = useRef();
 
-  function handleClearInput() {
+  const handleClearInput = () => {
     setSearch("");
     inputRef.current.focus();
-  }
+  };
+
+  const debounceChange = useCallback(
+    debounce((value) => setSearch(value), 700),
+    []
+  );
+
+  const handleChange = (e) => {
+    const value = e.target.value;
+    setText(value);
+    debounceChange(value);
+  };
 
   return (
     <div className={styles.div}>
       <input
         ref={inputRef}
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
+        value={text}
+        // onChange={(e) => setSearch(e.target.value)}
+        onChange={handleChange}
         className={styles.input}
         type="text"
-        placeholder="Введите название пиццы"
+        placeholder="Введите название пиццы ..."
       />
       <svg
         className={styles.svg}
