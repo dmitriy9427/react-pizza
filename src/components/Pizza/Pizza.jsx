@@ -29,7 +29,7 @@ function Pizza({ id, imageUrl, title, types, sizes, price }) {
       price,
       count: 1,
       countertBtn: 1,
-      date: Date.now(),
+      date: new Date().getMilliseconds(),
     };
     dispatch(addPizza(objPizza));
   };

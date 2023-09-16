@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { clearCart } from "../../redux/slices/cart";
 
 import CartItem from "../../components/CartItem/CartItem";
 import CartEmpty from "../../components/CartEmpty/CartEmpty";
@@ -8,10 +9,12 @@ import CartEmpty from "../../components/CartEmpty/CartEmpty";
 function Cart() {
   const { items, counter, totalPrice } = useSelector((state) => state.cart);
 
+  const dispatch = useDispatch();
+
   const navigate = useNavigate();
   return (
     <>
-      {!items.length ? (
+      {items && items.length === 0 ? (
         <CartEmpty />
       ) : (
         <div className="cart container--cart">
@@ -86,7 +89,9 @@ function Cart() {
                 />
               </svg>
 
-              <span>Очистить корзину</span>
+              <span onClick={() => dispatch(clearCart())}>
+                Очистить корзину
+              </span>
             </div>
           </div>
           <ul className="cart__items">

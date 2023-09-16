@@ -1,6 +1,10 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { incrementCount, decrementCount } from "../../redux/slices/cart";
+import {
+  incrementCount,
+  decrementCount,
+  removeItem,
+} from "../../redux/slices/cart";
 
 function CartItem({ id, imageUrl, title, types, sizes, price, count, date }) {
   const dispatch = useDispatch();
@@ -63,7 +67,10 @@ function CartItem({ id, imageUrl, title, types, sizes, price, count, date }) {
         <b>{price} ₽</b>
       </div>
       <div className="cart__items-item-remove">
-        <div className="button--circle">
+        <div
+          onClick={() => dispatch(removeItem(date))}
+          className="button--circle"
+        >
           <svg
             width="10"
             height="10"
