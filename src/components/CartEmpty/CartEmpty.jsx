@@ -5,7 +5,7 @@ import cartEmpty from "../../img/empty-cart.png";
 
 function CartEmpty() {
   return (
-    <div class="cart cart--empty">
+    <div className="cart cart--empty">
       <h2>
         Корзина пустая <icon>😕</icon>
       </h2>
@@ -15,7 +15,7 @@ function CartEmpty() {
         Для того, чтобы заказать пиццу, перейди на главную страницу.
       </p>
       <img src={cartEmpty} alt="Empty cart" />
-      <Link to="/react-pizza" class="button button--black">
+      <Link to="/react-pizza" className="button button--black">
         <span>Вернуться назад</span>
       </Link>
     </div>

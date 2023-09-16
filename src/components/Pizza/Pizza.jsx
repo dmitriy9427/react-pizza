@@ -1,14 +1,37 @@
 import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { addPizza } from "../../redux/slices/cart";
 
 import "./Pizza.scss";
 
-function Pizza({ imageUrl, title, types, sizes, price }) {
+function Pizza({ id, imageUrl, title, types, sizes, price }) {
   const [typeActivate, setTypeActivate] = useState(0);
   const [selectedSize, setSelectedSize] = useState(0);
   const arrTypePizza = ["Тонкое", "Традиционное", "Пышное"];
 
+  const counter = useSelector((state) =>
+    state.cart.items.find((obj) => obj.id === id)
+  );
+
+  const dispatch = useDispatch();
+
   const selectedType = (index) => {
     setTypeActivate(index);
+  };
+
+  const handleAddPizza = () => {
+    const objPizza = {
+      id,
+      imageUrl,
+      title,
+      types: arrTypePizza[typeActivate],
+      sizes: sizes[selectedSize],
+      price,
+      count: 1,
+      countertBtn: 1,
+      date: Date.now(),
+    };
+    dispatch(addPizza(objPizza));
   };
 
   return (
@@ -54,8 +77,8 @@ function Pizza({ imageUrl, title, types, sizes, price }) {
               fill="white"
             />
           </svg>
-          <span>Добавить</span>
-          <i>0</i>
+          <span onClick={() => handleAddPizza()}>Добавить</span>
+          {counter && <i>{counter.countertBtn}</i>}
         </div>
       </div>
     </div>

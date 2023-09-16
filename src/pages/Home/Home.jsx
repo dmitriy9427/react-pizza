@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   setSelectedCategory,
   setSelectedSort,
-} from "../../redux/slices/FilterSlice";
+} from "../../redux/slices/filter";
 
 import Categories from "../../components/Categories/Categories";
 import Sort from "../../components/Sort/Sort";
@@ -22,11 +22,6 @@ function Home() {
     (state) => state.filters
   );
   const dispatch = useDispatch();
-
-  const sortby = `&sortBy=${sort}&order=asc`;
-  const category = categoryId > 0 ? `&category=${categoryId}&order=asc` : "";
-  const searching = search ? `&search=${search}` : "";
-  const pages = `page=${currentPage}&limit=5`;
 
   // async function getPizzas() {
   //   setIsLoading(true);
@@ -48,6 +43,10 @@ function Home() {
   }
 
   useEffect(() => {
+    const sortby = `&sortBy=${sort}&order=asc`;
+    const category = categoryId > 0 ? `&category=${categoryId}&order=asc` : "";
+    const searching = search ? `&search=${search}` : "";
+    const pages = `page=${currentPage}&limit=5`;
     setIsLoading(true);
     axios
       .get(

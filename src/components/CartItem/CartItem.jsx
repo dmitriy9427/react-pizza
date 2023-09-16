@@ -1,22 +1,29 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { incrementCount, decrementCount } from "../../redux/slices/cart";
 
-function CartItem() {
+function CartItem({ id, imageUrl, title, types, sizes, price, count, date }) {
+  const dispatch = useDispatch();
+
   return (
     <li className="cart__items-item">
       <div className="cart__items-item-img">
         <img
           className="pizza-block__image"
-          src="https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"
-          alt="Pizza"
+          src={imageUrl}
+          alt="фотография пиццы"
         />
       </div>
       <div className="cart__items-item-info">
-        <h3>Сырный цыпленок</h3>
-        <p>тонкое тесто, 26 см.</p>
+        <h3>{title}</h3>
+        <p>
+          {types} тесто, {sizes} см.
+        </p>
       </div>
       <div className="cart__items-item-count">
         <div className="button--outline button--circle cart__items-item-count-minus">
           <svg
+            onClick={() => dispatch(decrementCount(date))}
             width="10"
             height="10"
             viewBox="0 0 10 10"
@@ -29,8 +36,11 @@ function CartItem() {
             ></path>
           </svg>
         </div>
-        <b>2</b>
-        <div className="button--outline button--circle cart__items-item-count-plus">
+        <b>{count}</b>
+        <div
+          onClick={() => dispatch(incrementCount(date))}
+          className="button--outline button--circle cart__items-item-count-plus"
+        >
           <svg
             width="10"
             height="10"
@@ -50,7 +60,7 @@ function CartItem() {
         </div>
       </div>
       <div className="cart__items-item-price">
-        <b>770 ₽</b>
+        <b>{price} ₽</b>
       </div>
       <div className="cart__items-item-remove">
         <div className="button--circle">

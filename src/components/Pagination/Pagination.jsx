@@ -1,10 +1,6 @@
 import { useDispatch } from "react-redux";
 import styles from "./Pagination.module.scss";
-import {
-  nextPage,
-  prevPage,
-  setSelectedPage,
-} from "../../redux/slices/FilterSlice";
+import { nextPage, prevPage, setSelectedPage } from "../../redux/slices/filter";
 
 function Pagination({ currentPage }) {
   const dispatch = useDispatch();

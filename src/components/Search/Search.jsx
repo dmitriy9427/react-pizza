@@ -6,7 +6,7 @@ import deleteIcon from "../../img/cross-svgrepo-com.svg";
 import styles from "./Search.module.scss";
 
 function Search() {
-  const { search, setSearch } = useContext(SearchContext);
+  const { setSearch } = useContext(SearchContext);
   const [text, setText] = useState("");
   const inputRef = useRef();
 
@@ -53,7 +53,7 @@ function Search() {
           strokeLinejoin="round"
         />
       </svg>
-      {search && (
+      {text && (
         <img
           onClick={() => handleClearInput()}
           className={styles.icon}
