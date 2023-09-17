@@ -31,6 +31,7 @@ function Pizza({ id, imageUrl, title, types, sizes, price }) {
       countertBtn: 1,
       date: new Date().getMilliseconds(),
     };
+
     dispatch(addPizza(objPizza));
   };
 

@@ -64,7 +64,7 @@ function CartItem({ id, imageUrl, title, types, sizes, price, count, date }) {
         </div>
       </div>
       <div className="cart__items-item-price">
-        <b>{price} ₽</b>
+        <b>{price * count} ₽</b>
       </div>
       <div className="cart__items-item-remove">
         <div

@@ -14,6 +14,7 @@ export const SearchContext = createContext();
 
 function App() {
   const [search, setSearch] = useState("");
+
   return (
     <SearchContext.Provider value={{ search, setSearch }}>
       <div className="wrapper">

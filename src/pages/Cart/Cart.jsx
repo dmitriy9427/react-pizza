@@ -7,7 +7,9 @@ import CartItem from "../../components/CartItem/CartItem";
 import CartEmpty from "../../components/CartEmpty/CartEmpty";
 
 function Cart() {
-  const { items, counter, totalPrice } = useSelector((state) => state.cart);
+  const { items } = useSelector((state) => state.cart);
+  const totalCounter = items.reduce((sum, item) => sum + item.count, 0);
+  const total = items.reduce((sum, obj) => sum + obj.price * obj.count, 0);
 
   const dispatch = useDispatch();
 
@@ -103,10 +105,10 @@ function Cart() {
           <div className="cart__bottom">
             <div className="cart__bottom-details">
               <span>
-                Всего пицц: <b>{counter} шт.</b>{" "}
+                Всего пицц: <b>{totalCounter} шт.</b>{" "}
               </span>
               <span>
-                Сумма заказа: <b>{totalPrice} ₽</b>{" "}
+                Сумма заказа: <b>{total} ₽</b>{" "}
               </span>
             </div>
             <div className="cart__bottom-buttons">
@@ -130,7 +132,9 @@ function Cart() {
                   />
                 </svg>
 
-                <span onClick={() => navigate(-1)}>Вернуться назад</span>
+                <span onClick={() => navigate("/react-pizza")}>
+                  Вернуться назад
+                </span>
               </Link>
               <div className="button pay-btn">
                 <span>Оплатить сейчас</span>
