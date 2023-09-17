@@ -9,6 +9,11 @@ import {
 function CartItem({ id, imageUrl, title, types, sizes, price, count, date }) {
   const dispatch = useDispatch();
 
+  const handleRemoveItem = () => {
+    if (window.confirm("Вы действительно хотите удалить эту пиццу?"))
+      dispatch(removeItem(date));
+  };
+
   return (
     <li className="cart__items-item">
       <div className="cart__items-item-img">
@@ -67,10 +72,7 @@ function CartItem({ id, imageUrl, title, types, sizes, price, count, date }) {
         <b>{price * count} ₽</b>
       </div>
       <div className="cart__items-item-remove">
-        <div
-          onClick={() => dispatch(removeItem(date))}
-          className="button--circle"
-        >
+        <div onClick={handleRemoveItem} className="button--circle">
           <svg
             width="10"
             height="10"

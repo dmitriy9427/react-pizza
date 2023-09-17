@@ -14,6 +14,12 @@ function Cart() {
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
+
+  const handleClearAll = () => {
+    if (window.confirm("Вы действительно хотите очистить корзину?")) {
+      dispatch(clearCart());
+    }
+  };
   return (
     <>
       {items && items.length === 0 ? (
@@ -91,9 +97,7 @@ function Cart() {
                 />
               </svg>
 
-              <span onClick={() => dispatch(clearCart())}>
-                Очистить корзину
-              </span>
+              <span onClick={handleClearAll}>Очистить корзину</span>
             </div>
           </div>
           <ul className="cart__items">
