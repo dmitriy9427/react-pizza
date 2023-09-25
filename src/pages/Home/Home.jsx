@@ -12,12 +12,11 @@ import Pizza from "../../components/Pizza/Pizza";
 import PizzaSceleton from "../../components/Pizza/PizzaSceleton/PizzaSceleton";
 import Pagination from "../../components/Pagination/Pagination";
 import { SearchContext } from "../../App";
+import { fetchPizzas } from "../../redux/slices/pizza";
 
 function Home() {
-  const [pizzas, setPizzas] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
   const { search } = useContext(SearchContext);
-
+  const { pizzas, status } = useSelector((state) => state.pizza);
   const { categoryId, sort, currentPage } = useSelector(
     (state) => state.filters
   );
@@ -43,22 +42,7 @@ function Home() {
   }
 
   useEffect(() => {
-    const sortby = `&sortBy=${sort}&order=asc`;
-    const category = categoryId > 0 ? `&category=${categoryId}&order=asc` : "";
-    const searching = search ? `&search=${search}` : "";
-    const pages = `page=${currentPage}&limit=5`;
-    setIsLoading(true);
-    axios
-      .get(
-        `https://64e1008250713530432ce0c5.mockapi.io/pizzas/?${pages}${searching}${category}${sortby}`
-      )
-      .then((res) => {
-        setPizzas(res.data);
-        setIsLoading(false);
-      })
-      .catch((err) => {
-        console.log(err.response);
-      });
+    dispatch(fetchPizzas({ sort, categoryId, search, currentPage }));
   }, [categoryId, sort, search, currentPage]);
 
   return (
@@ -72,15 +56,16 @@ function Home() {
         <Sort handleSelectedSorted={handleSelectedSort} />
       </div>
       <div className="content__items">
-        {pizzas && !isLoading
-          ? pizzas
-              .filter((pizza) =>
-                pizza.title.toLowerCase().includes(search.toLowerCase())
-              )
-              .map((pizza) => <Pizza key={pizza.id} {...pizza} />)
-          : [...new Array(5)].map((_, index) => <PizzaSceleton key={index} />)}
+        {status === "sucsess" &&
+          pizzas
+            .filter((pizza) =>
+              pizza.title.toLowerCase().includes(search.toLowerCase())
+            )
+            .map((pizza) => <Pizza key={pizza.id} {...pizza} />)}
+        {status === "loading" &&
+          [...new Array(5)].map((_, index) => <PizzaSceleton key={index} />)}
       </div>
-      {pizzas.length ? <Pagination currentPage={currentPage} /> : ""}
+      <Pagination currentPage={currentPage} />
     </>
   );
 }
