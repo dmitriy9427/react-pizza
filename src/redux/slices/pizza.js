@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
 
 const initialState = {
   pizzas: [],
@@ -8,27 +9,27 @@ const initialState = {
 export const fetchPizzas = createAsyncThunk(
   "pizzaSlice/fetchPizzas",
   async function ({ sort, categoryId, search, currentPage }) {
-    const sortby = `&sortBy=${sort}&order=asc`;
-    const category = categoryId > 0 ? `&category=${categoryId}&order=asc` : "";
-    const searching = search ? `&search=${search}` : "";
-    const pages = `page=${currentPage}&limit=5`;
-    const res = await fetch(
-      `https://64e1008250713530432ce0c5.mockapi.io/pizzas/?${pages}${searching}${category}${sortby}`
-    );
-    const data = res.json();
-
-    return data;
+    try {
+      const sortby = `&sortBy=${sort}&order=asc`;
+      const category =
+        categoryId > 0 ? `&category=${categoryId}&order=asc` : "";
+      const searching = search ? `&search=${search}` : "";
+      const pages = `page=${currentPage}&limit=5`;
+      const res = await axios.get(
+        `https://64ef1008250713530432ce0c5.mockapi.io/pizzas/?${pages}${searching}${category}${sortby}`
+      );
+      return res.data;
+    } catch (error) {
+      console.log(error.message);
+      alert(`     Ошибка получения пицц.
+     ${error.message}`);
+    }
   }
 );
 
 const pizzaSlice = createSlice({
   name: "pizzaSlice",
   initialState,
-  reducers: {
-    getPizzas(state, action) {
-      state.pizzas = action.payload;
-    },
-  },
   extraReducers: {
     [fetchPizzas.pending]: (state) => {
       state.pizzas = [];
@@ -39,12 +40,12 @@ const pizzaSlice = createSlice({
       state.pizzas = action.payload;
     },
     [fetchPizzas.rejected]: (state) => {
-      state.status = "reject";
+      state.status = "error";
       state.pizzas = [];
     },
   },
 });
 
-export const { getPizzas } = pizzaSlice.actions;
+// export const { getPizzas } = pizzaSlice.actions;
 
 export default pizzaSlice.reducer;
