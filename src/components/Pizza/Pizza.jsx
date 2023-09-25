@@ -1,22 +1,29 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { addPizza } from "../../redux/slices/cart";
+import { obj } from "../../assets/other";
 
 import "./Pizza.scss";
+import {
+  setSelectedTypeActivate,
+  setSelectedSize,
+} from "../../redux/slices/filter";
 
 function Pizza({ id, imageUrl, title, types, sizes, price }) {
-  const [typeActivate, setTypeActivate] = useState(0);
-  const [selectedSize, setSelectedSize] = useState(0);
-  const arrTypePizza = ["Тонкое", "Традиционное", "Пышное"];
+  // const [typeActivate, setTypeActivate] = useState(0);
+  // const [selectedSize, setSelectedSize] = useState(0);
 
   const counter = useSelector((state) =>
     state.cart.items.find((obj) => obj.id === id)
   );
 
+  const { typeActivate, selectedSize } = useSelector((state) => state.filters);
+
   const dispatch = useDispatch();
 
   const selectedType = (index) => {
-    setTypeActivate(index);
+    dispatch(setSelectedTypeActivate(index));
   };
 
   const handleAddPizza = () => {
@@ -24,7 +31,7 @@ function Pizza({ id, imageUrl, title, types, sizes, price }) {
       id,
       imageUrl,
       title,
-      types: arrTypePizza[typeActivate],
+      types: obj.arrTypePizza[typeActivate],
       sizes: sizes[selectedSize],
       price,
       count: 1,
@@ -37,8 +44,10 @@ function Pizza({ id, imageUrl, title, types, sizes, price }) {
 
   return (
     <div className="pizza-block">
-      <img className="pizza-block__image" src={imageUrl} alt={title} />
-      <h4 className="pizza-block__title">{title}</h4>
+      <Link to={`/pizza/${id}`}>
+        <img className="pizza-block__image" src={imageUrl} alt={title} />
+        <h4 className="pizza-block__title">{title}</h4>
+      </Link>
       <div className="pizza-block__selector">
         <ul>
           {types.map((indexType, i) => (
@@ -47,14 +56,14 @@ function Pizza({ id, imageUrl, title, types, sizes, price }) {
               onClick={() => selectedType(i)}
               key={indexType}
             >
-              {arrTypePizza[indexType]}
+              {obj.arrTypePizza[indexType]}
             </li>
           ))}
         </ul>
         <ul>
           {sizes.map((size, index) => (
             <li
-              onClick={() => setSelectedSize(index)}
+              onClick={() => dispatch(setSelectedSize(index))}
               className={selectedSize === index ? "active" : ""}
               key={index}
             >

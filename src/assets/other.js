@@ -25,7 +25,10 @@ const options = [
   },
 ];
 
+const arrTypePizza = ["Тонкое", "Традиционное", "Пышное"];
+
 export const obj = {
   categories,
   options,
+  arrTypePizza,
 };
