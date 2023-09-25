@@ -21,8 +21,8 @@
   - react-router v6
   - react-content-loader(react-sceleton для того чтобы пользователь понимал, что идет загрузка контента.)
   - lodash.debounce(отказ от множественных запросов к API, для увеличения производительности приложения)
-  - async/await + axios
-- Redux - Toolkit
+  - async/await + axios(try/catch)
+- Redux-Toolkit(createSlice, createAsyncThunk)
 
 #### Инструменты разработки:
 

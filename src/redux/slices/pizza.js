@@ -8,7 +8,7 @@ const initialState = {
 
 export const fetchPizzas = createAsyncThunk(
   "pizzaSlice/fetchPizzas",
-  async function ({ sort, categoryId, search, currentPage }) {
+  async function ({ sort, categoryId, search, currentPage }, thunkAPI) {
     try {
       const sortby = `&sortBy=${sort}&order=asc`;
       const category =
@@ -16,13 +16,13 @@ export const fetchPizzas = createAsyncThunk(
       const searching = search ? `&search=${search}` : "";
       const pages = `page=${currentPage}&limit=5`;
       const res = await axios.get(
-        `https://64ef1008250713530432ce0c5.mockapi.io/pizzas/?${pages}${searching}${category}${sortby}`
+        `https://64e1008250713530432ce0c5.mockapi.io/pizzas/?${pages}${searching}${category}${sortby}`
       );
+
       return res.data;
     } catch (error) {
       console.log(error.message);
-      alert(`     Ошибка получения пицц.
-     ${error.message}`);
+      throw new Error(thunkAPI.rejectWithValue);
     }
   }
 );
