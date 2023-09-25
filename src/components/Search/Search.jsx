@@ -1,23 +1,24 @@
-import React, { useContext, useRef, useCallback, useState } from "react";
-import { SearchContext } from "../../App";
+import React, { useRef, useCallback, useState } from "react";
 import debounce from "lodash.debounce";
+import { useDispatch } from "react-redux";
 
 import deleteIcon from "../../img/cross-svgrepo-com.svg";
 import styles from "./Search.module.scss";
+import { setSearchPizzas } from "../../redux/slices/filter";
 
 function Search() {
-  const { setSearch } = useContext(SearchContext);
   const [text, setText] = useState("");
   const inputRef = useRef();
+  const dispatch = useDispatch();
 
   const handleClearInput = () => {
-    setSearch("");
+    dispatch(setSearchPizzas(""));
     setText("");
     inputRef.current.focus();
   };
 
   const debounceChange = useCallback(
-    debounce((value) => setSearch(value), 700),
+    debounce((value) => dispatch(setSearchPizzas(value)), 700),
     []
   );
 

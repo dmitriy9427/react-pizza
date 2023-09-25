@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   setSelectedCategory,
@@ -10,28 +10,16 @@ import Sort from "../../components/Sort/Sort";
 import Pizza from "../../components/Pizza/Pizza";
 import PizzaSceleton from "../../components/Pizza/PizzaSceleton/PizzaSceleton";
 import Pagination from "../../components/Pagination/Pagination";
-import { SearchContext } from "../../App";
 import { fetchPizzas } from "../../redux/slices/pizza";
 import smile from "../../img/smile-svgrepo-com (1).svg";
 
 function Home() {
-  const { search } = useContext(SearchContext);
   const { pizzas, status } = useSelector((state) => state.pizza);
-  const { categoryId, sort, currentPage } = useSelector(
+  const { categoryId, sort, currentPage, search } = useSelector(
     (state) => state.filters
   );
+
   const dispatch = useDispatch();
-
-  // async function getPizzas() {
-  //   setIsLoading(true);
-
-  //   let res = await fetch(
-  //     `https://64e1008250713530432ce0c5.mockapi.io/pizzas/?${pages}${searching}${category}${sortby}`
-  //   );
-  //   let json = await res.json();
-  //   setPizzas(json);
-  //   setIsLoading(false);
-  // }
 
   const handleSelectedCategory = (id) => {
     dispatch(setSelectedCategory(id));
@@ -68,12 +56,18 @@ function Home() {
             <Sort handleSelectedSorted={handleSelectedSort} />
           </div>
           <div className="content__items">
-            {pizzas &&
+            {pizzas.length || status === "loading" ? (
               pizzas
                 .filter((pizza) =>
                   pizza.title.toLowerCase().includes(search.toLowerCase())
                 )
-                .map((pizza) => <Pizza key={pizza.id} {...pizza} />)}
+                .map((pizza) => <Pizza key={pizza.id} {...pizza} />)
+            ) : (
+              <h3>
+                Таких пицц нет ...
+                <img style={{ marginLeft: "10px" }} src={smile} alt="smile" />
+              </h3>
+            )}
             {status === "loading" &&
               [...new Array(5)].map((_, index) => (
                 <PizzaSceleton key={index} />

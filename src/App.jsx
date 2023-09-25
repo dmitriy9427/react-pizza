@@ -13,23 +13,19 @@ export const SearchContext = createContext();
 // import pizzas from "./assets/pizzaDB.json";
 
 function App() {
-  const [search, setSearch] = useState("");
-
   return (
-    <SearchContext.Provider value={{ search, setSearch }}>
-      <div className="wrapper">
-        <Header />
-        <div className="content">
-          <div className="container">
-            <Routes>
-              <Route path="/react-pizza" element={<Home />} />
-              <Route path="/cart" element={<Cart />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </div>
+    <div className="wrapper">
+      <Header />
+      <div className="content">
+        <div className="container">
+          <Routes>
+            <Route path="/react-pizza" element={<Home />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
         </div>
       </div>
-    </SearchContext.Provider>
+    </div>
   );
 }
 

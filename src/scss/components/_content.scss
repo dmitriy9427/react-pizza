@@ -8,10 +8,22 @@
   &__items {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    grid-template-areas: "length0";
     gap: 65px 35px;
     justify-content: space-evenly;
     align-items: center;
     margin-top: 40px;
+    h3 {
+      width: 500px;
+      @media (max-width: 590px) {
+        width: 400px;
+        font-size: 20px;
+      }
+      @media (max-width: 400px) {
+        width: 300px;
+        font-size: 15px;
+      }
+    }
   }
 
   &__top {

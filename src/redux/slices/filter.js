@@ -4,6 +4,7 @@ const initialState = {
   categoryId: 0,
   sort: "rating",
   currentPage: 1,
+  search: "",
 };
 
 export const filterSlice = createSlice({
@@ -15,6 +16,9 @@ export const filterSlice = createSlice({
     },
     setSelectedSort(state, action) {
       state.sort = action.payload;
+    },
+    setSearchPizzas(state, action) {
+      state.search = action.payload;
     },
     setSelectedPage(state, action) {
       state.currentPage = action.payload;
@@ -32,6 +36,7 @@ export const {
   setSelectedCategory,
   setSelectedSort,
   setSelectedPage,
+  setSearchPizzas,
   nextPage,
   prevPage,
 } = filterSlice.actions;
