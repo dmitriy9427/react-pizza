@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
-import { obj } from "../../assets/other";
 import { addPizza } from "../../redux/slices/cart";
 
 function PizzaInfo() {

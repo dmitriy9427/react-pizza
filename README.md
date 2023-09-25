@@ -18,7 +18,7 @@
   - функциональные компоненты
   - jsx
   - хуки (useState, useEffect, useContext, useRef, useCallback)
-  - react-router v6
+  - react-router v6(useNavigate, Link, useParams)
   - react-content-loader(react-sceleton для того чтобы пользователь понимал, что идет загрузка контента.)
   - lodash.debounce(отказ от множественных запросов к API, для увеличения производительности приложения)
   - async/await + axios(try/catch)
