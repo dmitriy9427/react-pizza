@@ -5,8 +5,6 @@ const initialState = {
   sort: "rating",
   currentPage: 1,
   search: "",
-  typeActivate: 0,
-  selectedSize: 0,
 };
 
 export const filterSlice = createSlice({
@@ -31,12 +29,6 @@ export const filterSlice = createSlice({
     prevPage(state) {
       state.currentPage = state.currentPage - 1;
     },
-    setSelectedTypeActivate(state, action) {
-      state.typeActivate = action.payload;
-    },
-    setSelectedSize(state, action) {
-      state.typeActivate = action.payload;
-    },
   },
 });
 
@@ -47,8 +39,6 @@ export const {
   setSearchPizzas,
   nextPage,
   prevPage,
-  setSelectedTypeActivate,
-  setSelectedSize,
 } = filterSlice.actions;
 
 export default filterSlice.reducer;

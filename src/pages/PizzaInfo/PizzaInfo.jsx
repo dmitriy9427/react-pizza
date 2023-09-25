@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import { useParams } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { obj } from "../../assets/other";
 import { addPizza } from "../../redux/slices/cart";
 
@@ -32,8 +31,6 @@ function PizzaInfo() {
       id: pizza.id,
       imageUrl: pizza.imageUrl,
       title: pizza.title,
-      types: obj.arrTypePizza[typeActivate],
-      sizes: pizza.sizes[selectedSize],
       price: pizza.price,
       count: 1,
       countertBtn: 1,

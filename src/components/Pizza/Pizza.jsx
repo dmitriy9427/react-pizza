@@ -2,28 +2,22 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { addPizza } from "../../redux/slices/cart";
-import { obj } from "../../assets/other";
 
 import "./Pizza.scss";
-import {
-  setSelectedTypeActivate,
-  setSelectedSize,
-} from "../../redux/slices/filter";
 
 function Pizza({ id, imageUrl, title, types, sizes, price }) {
-  // const [typeActivate, setTypeActivate] = useState(0);
-  // const [selectedSize, setSelectedSize] = useState(0);
+  const [typeActivate, setTypeActivate] = useState(0);
+  const [selectedSize, setSelectedSize] = useState(0);
+  const arrTypePizza = ["Тонкое", "Традиционное", "Пышное"];
 
   const counter = useSelector((state) =>
     state.cart.items.find((obj) => obj.id === id)
   );
 
-  const { typeActivate, selectedSize } = useSelector((state) => state.filters);
-
   const dispatch = useDispatch();
 
   const selectedType = (index) => {
-    dispatch(setSelectedTypeActivate(index));
+    setTypeActivate(index);
   };
 
   const handleAddPizza = () => {
@@ -31,7 +25,7 @@ function Pizza({ id, imageUrl, title, types, sizes, price }) {
       id,
       imageUrl,
       title,
-      types: obj.arrTypePizza[typeActivate],
+      types: arrTypePizza[typeActivate],
       sizes: sizes[selectedSize],
       price,
       count: 1,
@@ -56,14 +50,14 @@ function Pizza({ id, imageUrl, title, types, sizes, price }) {
               onClick={() => selectedType(i)}
               key={indexType}
             >
-              {obj.arrTypePizza[indexType]}
+              {arrTypePizza[indexType]}
             </li>
           ))}
         </ul>
         <ul>
           {sizes.map((size, index) => (
             <li
-              onClick={() => dispatch(setSelectedSize(index))}
+              onClick={() => setSelectedSize(index)}
               className={selectedSize === index ? "active" : ""}
               key={index}
             >
