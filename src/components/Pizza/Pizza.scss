@@ -4,11 +4,12 @@
   text-align: center;
   display: grid;
   flex-direction: column;
+  cursor: pointer;
+  text-align: center;
 
   &__image {
     width: calc(100% - 10%);
     margin: 0 auto;
-    border-radius: 50%;
   }
 
   &__title {
@@ -18,35 +19,23 @@
     margin-bottom: 20px;
   }
 
-  &__selector {
-    display: flex;
-    background-color: #f3f3f3;
-    border-radius: 10px;
-    flex-direction: column;
-    padding: 6px;
-
-    ul {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(30px, 1fr));
-      justify-content: space-evenly;
-      gap: 3px;
-      &:first-of-type {
-        margin-bottom: 6px;
-      }
-
-      li {
-        padding: 8px;
-        cursor: pointer;
-        font-weight: 600;
-        font-size: 12px;
-
-        &.active {
-          background: #ffffff;
-          box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04);
-          border-radius: 5px;
-          transition: box-shadow 0.7s ease, background 0.7s ease-out;
-        }
-      }
+  &__structure {
+    display: block;
+    height: 90px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  &__button {
+    border: none;
+    background-color: #fe5f1e;
+    color: #f3f3f3;
+    padding: 10px 25px;
+    border-radius: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.6 ease-in-out;
+    &:hover {
+      background-color: darken($color: #fe5f1e, $amount: 20%);
     }
   }
 

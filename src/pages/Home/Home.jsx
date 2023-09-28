@@ -12,6 +12,7 @@ import PizzaSceleton from "../../components/Pizza/PizzaSceleton/PizzaSceleton";
 import Pagination from "../../components/Pagination/Pagination";
 import { fetchPizzas } from "../../redux/slices/pizza";
 import smile from "../../img/smile-svgrepo-com (1).svg";
+import { Outlet } from "react-router-dom";
 
 function Home() {
   const { pizzas, status } = useSelector((state) => state.pizza);
@@ -69,11 +70,12 @@ function Home() {
               </h3>
             )}
             {status === "loading" &&
-              [...new Array(5)].map((_, index) => (
+              [...new Array(4)].map((_, index) => (
                 <PizzaSceleton key={index} />
               ))}
           </div>
           <Pagination currentPage={currentPage} />
+          <Outlet />
         </>
       )}
     </>

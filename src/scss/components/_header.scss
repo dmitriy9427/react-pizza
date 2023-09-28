@@ -9,11 +9,8 @@
     align-items: center;
     justify-content: space-between;
     @media (max-width: 1000px) {
-      display: grid;
-      grid-template-columns: 1fr;
-      grid-template-rows: repeat(3, 1fr);
-      justify-items: center;
-      row-gap: 10px;
+      display: flex;
+      flex-direction: column;
     }
     @media (max-width: 360px) {
       row-gap: 5px;
@@ -23,6 +20,9 @@
   &__logo {
     display: flex;
     align-items: center;
+    @media (max-width: 1000px) {
+      margin-bottom: 10px;
+    }
 
     img {
       margin-right: 15px;

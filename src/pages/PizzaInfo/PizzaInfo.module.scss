@@ -1,0 +1,231 @@
+.close {
+  position: absolute;
+  top: -60px;
+  right: -50px;
+  opacity: 0.7;
+  transition: all 0.3s ease;
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+  @media (max-width: 395px) {
+    width: 20px;
+    height: 20px;
+    top: -15px;
+    right: -15px;
+  }
+}
+
+.image {
+  width: 436px;
+  height: 436px;
+  @media (max-width: 960px) {
+    width: 336px;
+    height: 336px;
+  }
+  @media (max-width: 550px) {
+    width: 266px;
+    height: 266px;
+  }
+}
+
+.div {
+  display: flex;
+  flex-direction: column;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  @media (max-width: 867px) {
+    flex-direction: column-reverse;
+  }
+}
+
+.span {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  border: none;
+  background-color: #fe5f1e;
+  color: #f3f3f3;
+  padding: 10px 25px;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    opacity: 1;
+    background-color: darken($color: #fe5f1e, $amount: 20%);
+  }
+  span {
+    color: #f3f3f3;
+    margin-right: 10px;
+  }
+
+  i {
+    background-color: white;
+    color: #fe5f1e;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @media (max-width: 867px) {
+    margin-bottom: 10px;
+    width: 90%;
+    justify-content: center;
+  }
+}
+
+.back {
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 15px;
+  border: 1px solid #6b6b6b;
+  background-color: #8a7f7f;
+  padding: 15px 25px;
+  color: white;
+  opacity: 0.8;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    cursor: pointer;
+    opacity: 1;
+    background-color: darken($color: #8a7f7f, $amount: 20%);
+  }
+  @media (max-width: 867px) {
+    width: 90%;
+  }
+}
+
+.window {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba($color: #000000, $alpha: 0.5);
+  z-index: 99;
+}
+
+.pizza {
+  position: relative;
+  top: 15%;
+  left: 15%;
+  width: 943px;
+  height: 543px;
+  padding: 40px;
+  background-color: white;
+  border-radius: 30px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-content: center;
+  @media (max-width: 1250px) {
+    left: 12%;
+  }
+  @media (max-width: 1160px) {
+    left: 9%;
+  }
+  @media (max-width: 1130px) {
+    left: 7%;
+    width: 843px;
+  }
+  @media (max-width: 950px) {
+    left: 10%;
+    width: 703px;
+  }
+
+  @media (max-width: 867px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 643px;
+    h2 {
+      text-align: center;
+    }
+  }
+  @media (max-width: 867px) {
+    left: 12%;
+    width: 603px;
+  }
+  @media (max-width: 867px) {
+    width: 503px;
+  }
+  @media (max-width: 867px) {
+    width: 403px;
+    height: 753px;
+    top: 10%;
+    left: 25%;
+  }
+  @media (max-width: 717px) {
+    left: 17%;
+  }
+  @media (max-width: 563px) {
+    left: 14%;
+  }
+  @media (max-width: 550px) {
+    height: 703px;
+    width: 280px;
+    padding: 20px;
+    top: 8%;
+    left: 14%;
+  }
+  @media (max-width: 370px) {
+    left: 12%;
+  }
+  @media (max-width: 350px) {
+    left: 5%;
+  }
+}
+
+.selector {
+  display: flex;
+  background-color: #f3f3f3;
+  border-radius: 10px;
+  flex-direction: column;
+  padding: 6px;
+  margin: 30px 0 20px;
+  @media (max-width: 867px) {
+    margin: 15px 0 10px;
+  }
+}
+
+.p {
+  margin-bottom: 120px;
+
+  @media (max-width: 867px) {
+    margin-bottom: 10px;
+  }
+}
+
+.ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30px, 1fr));
+  justify-content: space-evenly;
+  gap: 5px;
+  text-align: center;
+  &:first-of-type {
+    margin-bottom: 6px;
+  }
+
+  li {
+    padding: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 12px;
+
+    &.active {
+      background: #ffffff;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04);
+      border-radius: 5px;
+      transition: box-shadow 0.7s ease, background 0.7s ease-out;
+    }
+  }
+}

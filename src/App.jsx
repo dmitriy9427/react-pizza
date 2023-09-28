@@ -18,8 +18,10 @@ function App() {
       <div className="content">
         <div className="container">
           <Routes>
-            <Route path="/react-pizza" element={<Home />} />
-            <Route path="/pizza/:pizzaId" element={<PizzaInfo />} />
+            <Route path="/react-pizza/" element={<Home />}>
+              <Route path=":pizzaId" element={<PizzaInfo />} />
+            </Route>
+
             <Route path="/cart" element={<Cart />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
