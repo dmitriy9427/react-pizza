@@ -112,7 +112,7 @@
   top: 0;
   left: 0;
   background-color: rgba($color: #000000, $alpha: 0.5);
-  z-index: 99;
+  overflow: 0;
 }
 
 .pizza {
@@ -127,6 +127,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   align-content: center;
+  z-index: 99;
   @media (max-width: 1250px) {
     left: 12%;
   }

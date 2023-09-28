@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { addPizza } from "../../redux/slices/cart";
 
 import close from "../../img/close-svgrepo-com.svg";
@@ -16,6 +16,7 @@ function PizzaInfo() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { pizzaId } = useParams();
+  const location = useLocation();
 
   const counter = useSelector((state) =>
     state.cart.items.find((obj) => obj.id === pizza.id)
@@ -49,6 +50,11 @@ function PizzaInfo() {
       setPizza(data);
     }
     fetchDataPizza();
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => (document.body.style.overflow = "unset");
   }, []);
 
   return (
