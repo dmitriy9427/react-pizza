@@ -2,14 +2,12 @@
 
 [!['pizza-react'](https://readme-typing-svg.herokuapp.com?color=%2336BCF7&lines=Посмотреть+можно+здесь!)](https://dmitriy9427.github.io/react-pizza/)
 
-<img src="./assets-readme/pizza.jpg" alt='отображение проекта'/>
-
 ## Описание проекта:
 
 Использован сайт для хранения данных - https://mockapi.io/
 Адаптивная верстка с использование @media-запросов от 320px и больше.
 
-#### Сортировка списка пицц по категориям:
+# Сортировка списка пицц по категориям:
 
 <img src="./assets-readme/категории-_1_.gif" alt='отображение проекта'/>
 
