@@ -1,5 +1,9 @@
 # Магазин пицц.
 
+<img src="./src/img/output(video-cutter-js.com) (1).gif" alt='pizza-store-gif'/>
+
+## Ссылки:
+
 [!['pizza-react'](https://readme-typing-svg.herokuapp.com?color=%2336BCF7&lines=Посмотреть+можно+здесь!)](https://dmitriy9427.github.io/react-pizza/)
 
 ## Описание проекта:
