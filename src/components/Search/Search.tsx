@@ -6,23 +6,28 @@ import deleteIcon from "../../img/cross-svgrepo-com.svg";
 import styles from "./Search.module.scss";
 import { setSearchPizzas } from "../../redux/slices/filter";
 
-function Search() {
-  const [text, setText] = useState("");
-  const inputRef = useRef();
+const Search: React.FC = () => {
+  const [text, setText] = useState<string>("");
+  // const inputRef = useRef<HTMLInputElement | null>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
   const dispatch = useDispatch();
 
   const handleClearInput = () => {
     dispatch(setSearchPizzas(""));
     setText("");
-    inputRef.current.focus();
+    // inputRef.current = document.getElementById('input') as HTMLInputElement;
+    // if(inputRef.current) {
+    //   inputRef.current.focus()
+    // }
+    inputRef.current?.focus();
   };
 
   const debounceChange = useCallback(
-    debounce((value) => dispatch(setSearchPizzas(value)), 700),
+    debounce ((value: string) => dispatch(setSearchPizzas(value)), 700),
     []
-  );
+    );
 
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     const value = e.target.value;
     setText(value);
     debounceChange(value);
@@ -33,6 +38,7 @@ function Search() {
       <input
         ref={inputRef}
         value={text}
+        id="input"
         onChange={handleChange}
         className={styles.input}
         type="text"

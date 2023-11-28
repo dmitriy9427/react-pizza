@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 import styles from "./Pagination.module.scss";
 import { nextPage, prevPage, setSelectedPage } from "../../redux/slices/filter";
 
-function Pagination({ currentPage }) {
+const Pagination = ({ currentPage }) => {
   const dispatch = useDispatch();
   return (
     <div className={styles.pagination}>
@@ -59,6 +59,6 @@ function Pagination({ currentPage }) {
       )}
     </div>
   );
-}
+};
 
 export default Pagination;

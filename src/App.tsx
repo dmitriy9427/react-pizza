@@ -1,17 +1,17 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 
-import Header from "./components/Header/Header";
-import Home from "./pages/Home/Home";
-import Cart from "./pages/Cart/Cart";
-import NotFound from "./pages/NotFound/NotFound";
-import PizzaInfo from "./pages/PizzaInfo/PizzaInfo";
+import Header from "./components/Header/Header.tsx";
+import Home from "./pages/Home/Home.tsx";
+import Cart from "./pages/Cart/Cart.tsx";
+import NotFound from "./pages/NotFound/NotFound.tsx";
+import PizzaInfo from "./pages/PizzaInfo/PizzaInfo.tsx";
 
 import "./scss/app.scss";
 
 // import pizzas from "./assets/pizzaDB.json";
 
-function App() {
+const App: React.FC = () => {
   return (
     <div className="wrapper">
       <Header />

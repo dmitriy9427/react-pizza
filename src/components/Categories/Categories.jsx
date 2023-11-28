@@ -3,7 +3,7 @@ import { obj } from "../../assets/other";
 
 import "./Categories.scss";
 
-function Categories({ categoryId, handleSlectedCategory }) {
+const Categories = ({ categoryId, handleSlectedCategory }) => {
   return (
     <div className="categories">
       <ul>
@@ -19,6 +19,6 @@ function Categories({ categoryId, handleSlectedCategory }) {
       </ul>
     </div>
   );
-}
+};
 
 export default Categories;

@@ -14,7 +14,7 @@ import { fetchPizzas } from "../../redux/slices/pizza";
 import smile from "../../img/smile-svgrepo-com (1).svg";
 import { Outlet } from "react-router-dom";
 
-function Home() {
+const Home: React.FC = () => {
   const { pizzas, status } = useSelector((state) => state.pizza);
   const { categoryId, sort, currentPage, search } = useSelector(
     (state) => state.filters
@@ -80,6 +80,6 @@ function Home() {
       )}
     </>
   );
-}
+};
 
 export default Home;

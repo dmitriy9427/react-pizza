@@ -7,11 +7,31 @@ import { addPizza } from "../../redux/slices/cart";
 import close from "../../img/close-svgrepo-com.svg";
 import styles from "./PizzaInfo.module.scss";
 
-function PizzaInfo() {
-  const [pizza, setPizza] = useState([]);
-  const [typeActivate, setTypeActivate] = useState(0);
-  const [selectedSize, setSelectedSize] = useState(0);
-  const arrTypePizza = ["Тонкое", "Традиционное", "Пышное"];
+const PizzaInfo: React.FC = () => {
+  const [pizza, setPizza] = useState<{
+    id: string;
+    imageUrl: string;
+    title: string;
+    types: string[];
+    sizes: number[];
+    price: number;
+    count: number;
+    countertBtn: number;
+    structure: string;
+  }>({
+    id: '',
+    imageUrl: '',
+    title: '',
+    types: [],
+    sizes: [],
+    price: 0,
+    count: 1,
+    countertBtn: 1,
+    structure: '',
+  })
+  const [typeActivate, setTypeActivate] = useState<number>(0);
+  const [selectedSize, setSelectedSize] = useState<number>(0);
+  const arrTypePizza: string[] = ["Тонкое", "Традиционное", "Пышное"];
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -20,6 +40,9 @@ function PizzaInfo() {
   const counter = useSelector((state) =>
     state.cart.items.find((obj) => obj.id === pizza.id)
   );
+
+  console.log(counter);
+  
 
   const selectedType = (index) => {
     setTypeActivate(index);
@@ -53,7 +76,9 @@ function PizzaInfo() {
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
-    return () => (document.body.style.overflow = "unset");
+    
+    return () => {
+      document.body.style.overflow = "unset"};
   }, []);
 
   return (

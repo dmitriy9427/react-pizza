@@ -1,15 +1,15 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { clearCart } from "../../redux/slices/cart";
+import { clearCart } from "../../redux/slices/cart.js";
 
-import CartItem from "../../components/CartItem/CartItem";
-import CartEmpty from "../../components/CartEmpty/CartEmpty";
+import CartItem from "../../components/CartItem/CartItem.jsx";
+import CartEmpty from "../../components/CartEmpty/CartEmpty.tsx";
 
-function Cart() {
-  const { items } = useSelector((state) => state.cart);
-  const totalCounter = items.reduce((sum, item) => sum + item.count, 0);
-  const total = items.reduce((sum, obj) => sum + obj.price * obj.count, 0);
+const Cart: React.FC = () => {
+  const { items } = useSelector((state: any) => state.cart);
+  const totalCounter = items.reduce((sum: number, item: any) => sum + item.count, 0);
+  const total = items.reduce((sum: number, obj: any) => sum + obj.price * obj.count, 0);
 
   const dispatch = useDispatch();
 
@@ -149,6 +149,6 @@ function Cart() {
       )}
     </>
   );
-}
+};
 
 export default Cart;

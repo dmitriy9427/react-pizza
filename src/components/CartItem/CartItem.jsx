@@ -6,7 +6,7 @@ import {
   removeItem,
 } from "../../redux/slices/cart";
 
-function CartItem({ id, imageUrl, title, types, sizes, price, count, date }) {
+const CartItem = ({ imageUrl, title, types, sizes, price, count, date }) => {
   const dispatch = useDispatch();
 
   const handleRemoveItem = () => {
@@ -93,6 +93,6 @@ function CartItem({ id, imageUrl, title, types, sizes, price, count, date }) {
       </div>
     </li>
   );
-}
+};
 
 export default CartItem;

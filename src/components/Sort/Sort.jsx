@@ -3,7 +3,7 @@ import { obj } from "../../assets/other";
 
 import "./Sort.scss";
 
-function Sort({ handleSelectedSorted }) {
+const Sort = ({ handleSelectedSorted }) => {
   return (
     <div className="sort">
       <label className="sort__label">Сортировка по: </label>
@@ -23,6 +23,6 @@ function Sort({ handleSelectedSorted }) {
       </select>
     </div>
   );
-}
+};
 
 export default Sort;

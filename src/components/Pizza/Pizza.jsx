@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import "./Pizza.scss";
 
-function Pizza({ id, imageUrl, title, structure, price }) {
+const Pizza = ({ id, imageUrl, title, structure, price }) => {
   return (
     <div className="pizza-block">
       <Link to={`/react-pizza/${id}`}>
@@ -19,6 +19,6 @@ function Pizza({ id, imageUrl, title, structure, price }) {
       </Link>
     </div>
   );
-}
+};
 
 export default Pizza;

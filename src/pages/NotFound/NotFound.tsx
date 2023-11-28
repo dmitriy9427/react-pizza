@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./NotFound.module.scss";
 import { useNavigate } from "react-router-dom";
 
-function NotFound() {
+const NotFound: React.FC = () => {
   const navigate = useNavigate();
   return (
     <div className={styles.root}>

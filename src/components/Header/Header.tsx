@@ -1,14 +1,14 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-
-import pizzaLogo from "../../img/pizza-logo.svg";
-import Search from "../Search/Search";
 import { useSelector } from "react-redux";
 
-function Header() {
-  const { items } = useSelector((state) => state.cart);
-  const totalCounter = items.reduce((sum, item) => sum + item.count, 0);
-  const total = items.reduce((sum, obj) => sum + obj.price * obj.count, 0);
+import pizzaLogo from "../../img/pizza-logo.svg";
+import Search from "../Search/Search.tsx";
+
+const Header: React.FC =() => {
+  const { items } = useSelector((state: any) => state.cart);
+  const totalCounter = items.reduce((sum: number, item: any) => sum + item.count, 0);
+  const total = items.reduce((sum: number, obj: any) => sum + obj.price * obj.count, 0);
 
   const location = useLocation();
 
