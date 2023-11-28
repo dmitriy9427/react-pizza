@@ -4,6 +4,10 @@
   border-bottom: 1px solid $gray-line;
   padding: 40px 0;
 
+  @media (max-width: 460px) {
+    padding: 20px 0;
+  }
+
   .container {
     display: flex;
     align-items: center;
@@ -14,6 +18,18 @@
     }
     @media (max-width: 360px) {
       row-gap: 5px;
+    }
+  }
+
+  &__cart {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 20px;
+
+    @media (max-width: 1001px) {
+      flex-direction: column;
+      column-gap: 0;
     }
   }
 
@@ -39,11 +55,5 @@
     p {
       color: #7b7b7b;
     }
-  }
-}
-
-@media screen and (max-width: 460px) {
-  .header {
-    padding: 20px 0;
   }
 }

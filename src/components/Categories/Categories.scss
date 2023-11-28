@@ -4,6 +4,10 @@
   ul {
     display: flex;
 
+    @media (max-width: 1340px) {
+      flex-wrap: wrap;
+    }
+
     li {
       background-color: #f9f9f9;
       padding: 13px 30px;
@@ -12,6 +16,10 @@
       font-weight: bold;
       cursor: pointer;
       transition: background-color 0.1s ease-in-out;
+
+      @media (max-width: 1340px) {
+        margin-bottom: 10px;
+      }
 
       &:hover {
         background-color: darken(#f9f9f9, 2%);
@@ -25,17 +33,6 @@
         background-color: #282828;
         color: #fff;
         transition: background-color 0.7s ease, color 0.7s ease-out;
-      }
-    }
-  }
-}
-
-@media screen and (max-width: 1340px) {
-  .categories {
-    ul {
-      flex-wrap: wrap;
-      li {
-        margin-bottom: 10px;
       }
     }
   }

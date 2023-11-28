@@ -112,13 +112,13 @@
   top: 0;
   left: 0;
   background-color: rgba($color: #000000, $alpha: 0.5);
-  overflow: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .pizza {
   position: relative;
-  top: 15%;
-  left: 15%;
   width: 943px;
   height: 543px;
   padding: 40px;
@@ -128,18 +128,11 @@
   grid-template-columns: repeat(2, 1fr);
   align-content: center;
   z-index: 99;
-  @media (max-width: 1250px) {
-    left: 12%;
-  }
-  @media (max-width: 1160px) {
-    left: 9%;
-  }
+
   @media (max-width: 1130px) {
-    left: 7%;
     width: 843px;
   }
   @media (max-width: 950px) {
-    left: 10%;
     width: 703px;
   }
 
@@ -153,7 +146,6 @@
     }
   }
   @media (max-width: 867px) {
-    left: 12%;
     width: 603px;
   }
   @media (max-width: 867px) {
@@ -162,27 +154,12 @@
   @media (max-width: 867px) {
     width: 403px;
     height: 753px;
-    top: 10%;
-    left: 25%;
   }
-  @media (max-width: 717px) {
-    left: 17%;
-  }
-  @media (max-width: 563px) {
-    left: 14%;
-  }
+
   @media (max-width: 550px) {
     height: 703px;
     width: 280px;
     padding: 20px;
-    top: 8%;
-    left: 14%;
-  }
-  @media (max-width: 370px) {
-    left: 12%;
-  }
-  @media (max-width: 350px) {
-    left: 5%;
   }
 }
 

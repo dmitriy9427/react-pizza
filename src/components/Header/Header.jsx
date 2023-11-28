@@ -24,9 +24,10 @@ function Header() {
             <p>самая вкусная пицца во вселенной</p>
           </div>
         </div>
-        <Search />
+
         {location.pathname !== "/cart" && (
           <div className="header__cart">
+            <Search />
             <Link to="/cart" className="button button--cart">
               <span>{total} ₽</span>
               <div className="button__delimiter"></div>
