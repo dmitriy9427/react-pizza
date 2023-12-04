@@ -1,4 +1,4 @@
-const categories = [
+const categories: string[] = [
   "Все",
   "Мясные",
   "Вегетарианская",
@@ -7,7 +7,7 @@ const categories = [
   "Закрытые",
 ];
 
-const options = [
+const options: {id: number; name: string; property: string;}[] = [
   {
     id: 1,
     name: "популярности",
@@ -25,7 +25,7 @@ const options = [
   },
 ];
 
-const arrTypePizza = ["Тонкое", "Традиционное", "Пышное"];
+const arrTypePizza: string[] = ["Тонкое", "Традиционное", "Пышное"];
 
 export const obj = {
   categories,

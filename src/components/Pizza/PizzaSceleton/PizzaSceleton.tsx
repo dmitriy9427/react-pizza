@@ -2,7 +2,7 @@ import React from "react";
 import ContentLoader from "react-content-loader";
 import styles from "./PizzaSceleton.module.scss";
 
-const MyLoader = (props) => (
+const MyLoader: React.FC = (props) => (
   <>
     <div className={styles.main}>
       <ContentLoader

@@ -1,8 +1,13 @@
+import React from "react";
 import { useDispatch } from "react-redux";
 import styles from "./Pagination.module.scss";
 import { nextPage, prevPage, setSelectedPage } from "../../redux/slices/filter";
 
-const Pagination = ({ currentPage }) => {
+type PaginationProps = {
+  currentPage: number,
+};
+
+const Pagination: React.FC<PaginationProps> = ({ currentPage }) => {
   const dispatch = useDispatch();
   return (
     <div className={styles.pagination}>
@@ -28,7 +33,7 @@ const Pagination = ({ currentPage }) => {
         ""
       )}
       <ul className={styles.list}>
-        {[1, 2, 3].map((num) => {
+        {[1, 2, 3].map((num: number) => {
           return (
             <li
               key={num}

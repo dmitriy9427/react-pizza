@@ -1,24 +1,29 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+
+import axios from "axios";
+
 import { addPizza } from "../../redux/slices/cart";
 
-import close from "../../img/close-svgrepo-com.svg";
+import closes from "../../img/close-svgrepo-com.svg";
+
 import styles from "./PizzaInfo.module.scss";
 
+type PizzaInfoProps = {
+  id: string;
+  imageUrl: string;
+  title: string;
+  types: string[];
+  sizes: number[];
+  price: number;
+  count: number;
+  countertBtn: number;
+  structure: string;
+}
+
 const PizzaInfo: React.FC = () => {
-  const [pizza, setPizza] = useState<{
-    id: string;
-    imageUrl: string;
-    title: string;
-    types: string[];
-    sizes: number[];
-    price: number;
-    count: number;
-    countertBtn: number;
-    structure: string;
-  }>({
+  const [pizza, setPizza] = useState<PizzaInfoProps>({
     id: '',
     imageUrl: '',
     title: '',
@@ -38,13 +43,10 @@ const PizzaInfo: React.FC = () => {
   const { pizzaId } = useParams();
 
   const counter = useSelector((state) =>
-    state.cart.items.find((obj) => obj.id === pizza.id)
+    state.cart.items.find((obj: any) => obj.id === pizza.id)
   );
 
-  console.log(counter);
-  
-
-  const selectedType = (index) => {
+  const selectedType = (index: number) => {
     setTypeActivate(index);
   };
 
@@ -76,9 +78,10 @@ const PizzaInfo: React.FC = () => {
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
-    
+
     return () => {
-      document.body.style.overflow = "unset"};
+      document.body.style.overflow = "unset"
+    };
   }, []);
 
   return (
@@ -86,7 +89,7 @@ const PizzaInfo: React.FC = () => {
       <div className={styles.pizza}>
         <img
           onClick={() => navigate("/react-pizza")}
-          src={close}
+          src={closes}
           className={styles.close}
           alt="закрыть"
         />

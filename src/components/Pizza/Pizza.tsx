@@ -3,7 +3,15 @@ import { Link } from "react-router-dom";
 
 import "./Pizza.scss";
 
-const Pizza = ({ id, imageUrl, title, structure, price }) => {
+type PizzaProps = {
+  id: string,
+  imageUrl: string;
+  title: string;
+  structure: string;
+  price: number;
+};
+
+const Pizza: React.FC<PizzaProps> = ({ id, imageUrl, title, structure, price }) => {
   return (
     <div className="pizza-block">
       <Link to={`/react-pizza/${id}`}>

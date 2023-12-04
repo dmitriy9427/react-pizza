@@ -1,18 +1,20 @@
 import React, { useEffect } from "react";
+import { Outlet } from "react-router-dom";
+
 import { useSelector, useDispatch } from "react-redux";
+
+import Categories from "../../components/Categories/Categories.tsx";
+import Sort from "../../components/Sort/Sort.tsx";
+import Pizza from "../../components/Pizza/Pizza.tsx";
+import PizzaSceleton from "../../components/Pizza/PizzaSceleton/PizzaSceleton.tsx";
+import Pagination from "../../components/Pagination/Pagination.tsx";
+import { fetchPizzas } from "../../redux/slices/pizza";
 import {
   setSelectedCategory,
   setSelectedSort,
 } from "../../redux/slices/filter";
 
-import Categories from "../../components/Categories/Categories";
-import Sort from "../../components/Sort/Sort";
-import Pizza from "../../components/Pizza/Pizza";
-import PizzaSceleton from "../../components/Pizza/PizzaSceleton/PizzaSceleton";
-import Pagination from "../../components/Pagination/Pagination";
-import { fetchPizzas } from "../../redux/slices/pizza";
 import smile from "../../img/smile-svgrepo-com (1).svg";
-import { Outlet } from "react-router-dom";
 
 const Home: React.FC = () => {
   const { pizzas, status } = useSelector((state) => state.pizza);
@@ -22,11 +24,11 @@ const Home: React.FC = () => {
 
   const dispatch = useDispatch();
 
-  const handleSelectedCategory = (id) => {
-    dispatch(setSelectedCategory(id));
+  function handleSelectedCategory(index: number) {
+    dispatch(setSelectedCategory(index));
   };
 
-  function handleSelectedSort(value) {
+  function handleSelectedSort(value: string) {
     dispatch(setSelectedSort(value));
   }
 
@@ -59,10 +61,10 @@ const Home: React.FC = () => {
           <div className="content__items">
             {pizzas.length || status === "loading" ? (
               pizzas
-                .filter((pizza) =>
+                .filter((pizza: any) =>
                   pizza.title.toLowerCase().includes(search.toLowerCase())
                 )
-                .map((pizza) => <Pizza key={pizza.id} {...pizza} />)
+                .map((pizza: any) => <Pizza key={pizza.id} {...pizza} />)
             ) : (
               <h3>
                 Таких пицц нет ...

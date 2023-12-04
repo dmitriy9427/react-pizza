@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { clearCart } from "../../redux/slices/cart.js";
 
-import CartItem from "../../components/CartItem/CartItem.jsx";
+import CartItem from "../../components/CartItem/CartItem.tsx";
 import CartEmpty from "../../components/CartEmpty/CartEmpty.tsx";
 
 const Cart: React.FC = () => {
@@ -102,7 +102,7 @@ const Cart: React.FC = () => {
           </div>
           <ul className="cart__items">
             {items &&
-              items.map((item) => {
+              items.map((item: any) => {
                 return <CartItem key={item.date} {...item} />;
               })}
           </ul>

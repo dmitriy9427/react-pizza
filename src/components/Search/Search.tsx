@@ -23,12 +23,12 @@ const Search: React.FC = () => {
   };
 
   const debounceChange = useCallback(
-    debounce ((value: string) => dispatch(setSearchPizzas(value)), 700),
+    debounce((value: string) => dispatch(setSearchPizzas(value)), 700),
     []
-    );
+  );
 
-  const handleChange = (e: any) => {
-    const value = e.target.value;
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value: string = e.target.value;
     setText(value);
     debounceChange(value);
   };
