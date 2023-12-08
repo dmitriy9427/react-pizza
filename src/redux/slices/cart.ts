@@ -1,6 +1,32 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
+export type CartItem = {
+  items: {
+    id: string;
+    imageUrl: string;
+    title: string;
+    types: string[];
+    sizes: number[];
+    price: number;
+    count: number;
+    countertBtn: number;
+    date: number;
+  }[]
+}
+
+export type Obj = {
+  id: string;
+  imageUrl: string;
+  title: string;
+  types: string[];
+  sizes: number[];
+  price: number;
+  count: number;
+  countertBtn: number;
+  date: number;
+}
+
+const initialState: CartItem = {
   items: [],
 };
 
@@ -8,7 +34,7 @@ export const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    addPizza(state, action) {
+    addPizza(state, action: PayloadAction<Obj>) {
       const findItem = state.items.find(
         (item) =>
           item.id === action.payload.id &&
@@ -30,13 +56,13 @@ export const cartSlice = createSlice({
         findItem.count++;
       }
     },
-    removeItem(state, action) {
+    removeItem(state, action: PayloadAction<number>) {
       state.items = state.items.filter((item) => item.date !== action.payload);
     },
     clearCart(state) {
       state.items = [];
     },
-    incrementCount(state, action) {
+    incrementCount(state, action: PayloadAction<number>) {
       const findItem = state.items.find((item) => item.date === action.payload);
 
       if (findItem) {
@@ -44,7 +70,7 @@ export const cartSlice = createSlice({
         findItem.count++;
       }
     },
-    decrementCount(state, action) {
+    decrementCount(state, action: PayloadAction<number>) {
       const findItem = state.items.find((item) => item.date === action.payload);
 
       if (findItem && findItem.count >= 2) {

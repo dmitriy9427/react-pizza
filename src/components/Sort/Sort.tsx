@@ -4,7 +4,7 @@ import { obj } from "../../assets/other.ts";
 import "./Sort.scss";
 
 type SortProps = {
-  handleSelectedSorted: (value: string) => void;
+  handleSelectedSorted: (value: "rating" | "price" | "title") => void;
 }
 
 const Sort: React.FC<SortProps> = ({ handleSelectedSorted }) => {

@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import styles from "./Pagination.module.scss";
-import { nextPage, prevPage, setSelectedPage } from "../../redux/slices/filter";
+import { nextPage, prevPage, setSelectedPage } from "../../redux/slices/filter.ts";
 
 type PaginationProps = {
   currentPage: number,

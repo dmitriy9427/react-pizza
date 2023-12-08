@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 
 import deleteIcon from "../../img/cross-svgrepo-com.svg";
 import styles from "./Search.module.scss";
-import { setSearchPizzas } from "../../redux/slices/filter";
+import { setSearchPizzas } from "../../redux/slices/filter.ts";
 
 const Search: React.FC = () => {
   const [text, setText] = useState<string>("");

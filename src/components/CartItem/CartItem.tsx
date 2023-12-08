@@ -4,7 +4,7 @@ import {
   incrementCount,
   decrementCount,
   removeItem,
-} from "../../redux/slices/cart";
+} from "../../redux/slices/cart.ts";
 
 type CartItemProps = {
   imageUrl: string,
@@ -13,7 +13,7 @@ type CartItemProps = {
   sizes: number[],
   price: number,
   count: number,
-  date: Date,
+  date: number,
 };
 
 const CartItem: React.FC<CartItemProps> = ({

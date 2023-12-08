@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 import axios from "axios";
 
-import { addPizza } from "../../redux/slices/cart";
+import { addPizza } from "../../redux/slices/cart.ts";
 
 import closes from "../../img/close-svgrepo-com.svg";
 
+import { RootState, useAppDispatch } from "../../redux/store.ts";
 import styles from "./PizzaInfo.module.scss";
 
 type PizzaInfoProps = {
@@ -20,6 +21,7 @@ type PizzaInfoProps = {
   count: number;
   countertBtn: number;
   structure: string;
+  date: number;
 }
 
 const PizzaInfo: React.FC = () => {
@@ -30,20 +32,21 @@ const PizzaInfo: React.FC = () => {
     types: [],
     sizes: [],
     price: 0,
-    count: 1,
-    countertBtn: 1,
+    count: 0,
+    countertBtn: 0,
     structure: '',
+    date: new Date().getMilliseconds(),
   })
   const [typeActivate, setTypeActivate] = useState<number>(0);
   const [selectedSize, setSelectedSize] = useState<number>(0);
   const arrTypePizza: string[] = ["Тонкое", "Традиционное", "Пышное"];
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { pizzaId } = useParams();
 
-  const counter = useSelector((state) =>
-    state.cart.items.find((obj: any) => obj.id === pizza.id)
+  const counter = useSelector((state: RootState) =>
+    state.cart.items.find((obj) => obj.id === pizza.id)
   );
 
   const selectedType = (index: number) => {
@@ -51,7 +54,17 @@ const PizzaInfo: React.FC = () => {
   };
 
   const handleAddPizza = () => {
-    const objPizza = {
+    const objPizza: {
+      id: string;
+      imageUrl: string;
+      title: string;
+      types: string;
+      sizes: number;
+      price: number;
+      count: number;
+      countertBtn: number;
+      date: number
+    } = {
       id: pizza.id,
       imageUrl: pizza.imageUrl,
       title: pizza.title,
@@ -98,28 +111,26 @@ const PizzaInfo: React.FC = () => {
           <h2>{pizza.title}</h2>
           <div className={styles.selector}>
             <ul className={styles.ul}>
-              {pizza.types &&
-                pizza.types.map((indexType, i) => (
-                  <li
-                    className={typeActivate === i ? styles.active : ""}
-                    onClick={() => selectedType(i)}
-                    key={indexType}
-                  >
-                    {arrTypePizza[indexType]}
-                  </li>
-                ))}
+              {pizza?.types.map((indexType, i: number) => (
+                <li
+                  className={typeActivate === i ? styles.active : ""}
+                  onClick={() => selectedType(i)}
+                  key={indexType}
+                >
+                  {arrTypePizza[indexType]}
+                </li>
+              ))}
             </ul>
             <ul className={styles.ul}>
-              {pizza.sizes &&
-                pizza.sizes.map((size, index) => (
-                  <li
-                    onClick={() => setSelectedSize(index)}
-                    className={selectedSize === index ? styles.active : ""}
-                    key={index}
-                  >
-                    {size} см.
-                  </li>
-                ))}
+              {pizza?.sizes.map((size, index) => (
+                <li
+                  onClick={() => setSelectedSize(index)}
+                  className={selectedSize === index ? styles.active : ""}
+                  key={index}
+                >
+                  {size} см.
+                </li>
+              ))}
             </ul>
           </div>
 
